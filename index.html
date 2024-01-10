@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zain's Portfolio</title>
+
+    <!--
+    - favicon
+  -->
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!--
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!--
+    - #MAIN
+  -->
+
+    <main>
+      <!--
+      - #SIDEBAR
+    -->
+
+      <aside class="sidebar" data-sidebar>
+        <div class="sidebar-info">
+          <figure class="avatar-box">
+            <img
+              src="./assets/images/img-xIod3bn49InuT6Ya6UpuQ3lf.png"
+              alt="Zain Qureshi"
+              width="80"
+            />
+          </figure>
+
+          <div class="info-content">
+            <h1 class="name" title="Zain Qureshi">Zain Qureshi</h1>
+
+            <p class="title">Full Stack Developer</p>
+          </div>
+
+          <button class="info_more-btn" data-sidebar-btn>
+            <span>Show Contacts</span>
+
+            <ion-icon name="chevron-down"></ion-icon>
+          </button>
+        </div>
+
+        <div class="sidebar-info_more">
+          <div class="separator"></div>
+
+          <ul class="contacts-list">
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Email</p>
+
+                <a href="mailto:zaynnqureshi.dev@gmail.com" class="contact-link"
+                  >zaynnqureshi.dev@gmail.com</a
+                >
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="phone-portrait-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Phone</p>
+
+                <a href="tel:+923049778171" class="contact-link"
+                  >+(92) 304 977 8171</a
+                >
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="calendar-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Birthday</p>
+
+                <time datetime="1999-06-08">June 08, 1999</time>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+
+              <div class="contact-info">
+                <p class="contact-title">Location</p>
+
+                <address>Karachi, Pakistan</address>
+              </div>
+            </li>
+          </ul>
+
+          <div class="separator"></div>
+
+          <ul class="social-list">
+            <li class="social-item">
+              <a href="https://www.linkedin.com/in/zain-qureshi-zinion" class="social-link" target="_blank">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          
+            <li class="social-item">
+              <a href="https://github.com/zaynnqureshi17" class="social-link" target="_blank">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+          
+            <li class="social-item">
+              <a href="https://twitter.com/Zin_Ion" class="social-link" target="_blank">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+          </ul>
+          
+        </div>
+      </aside>
+
+      <!--
+      - #main-content
+    -->
+
+      <div class="main-content">
+        <!--
+        - #NAVBAR
+      -->
+
+        <nav class="navbar">
+          <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>About</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Resume</button>
+            </li>
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Portfolio</button>
+            </li>
+
+            <!-- <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Blog</button>
+          </li> -->
+
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+        </nav>
+
+        <!--
+        - #ABOUT
+      -->
+
+        <article class="about active" data-page="about">
+          <header>
+            <h2 class="h2 article-title">About me</h2>
+          </header>
+
+          <section class="about-text">
+            <p>
+              I'm Zain Qureshi, a Full Stack Developer from Pakistan, with a
+              strong background in web development and computer science. I enjoy
+              turning complex problems into simple, beautiful, and intuitive
+              designs.
+            </p>
+
+            <p>
+              My job is to build your website so that it is functional and
+              user-friendly but at the same time attractive. Moreover, I add a
+              personal touch to your product and make sure that it is
+              eye-catching and easy to use. My aim is to bring across your
+              message and identity in the most creative way. I have created web
+              designs for many companies and have a strong understanding of
+              JavaScript, Java, TypeScript, and C#.
+            </p>
+          </section>
+
+          <!--
+          - service
+        -->
+
+          <section class="service">
+            <h3 class="h3 service-title">What I'm Doing</h3>
+            <ul class="service-list">
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-development-50.png"
+                    alt="Web development icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Full Stack Development</h4>
+                  <p class="service-item-text">
+                    High-quality development of web applications at a
+                    professional level using JavaScript, Java, TypeScript, and
+                    C#.
+                  </p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-developer-mode-50.png"
+                    alt="mobile app icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Mobile Apps</h4>
+                  <p class="service-item-text">
+                    Professional development of applications for iOS and
+                    Android.
+                  </p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-web-design-50.png"
+                    alt="design icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Web Design</h4>
+                  <p class="service-item-text">
+                    Crafting dynamic interfaces using React and Next.js to
+                    provide an engaging user experience.
+                  </p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-cloud-computing-64.png"
+                    alt="cloud icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Cloud Computing</h4>
+                  <p class="service-item-text">
+                    Exploring the realms of cloud computing to build robust and
+                    scalable applications.
+                  </p>
+                </div>
+              </li>
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-writing-30.png"
+                    alt="writing icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Technical Writing</h4>
+                  <p class="service-item-text">
+                    Proficient in technical writing, capable of producing clear,
+                    concise, and informative content on complex programming and
+                    computer science topics.
+                  </p>
+                </div>
+              </li>
+
+              <li class="service-item">
+                <div class="service-icon-box">
+                  <img
+                    src="./assets/images/icons/icons8-teaching-50.png"
+                    alt="teaching icon"
+                    width="40"
+                  />
+                </div>
+                <div class="service-content-box">
+                  <h4 class="h4 service-item-title">Teaching</h4>
+                  <p class="service-item-text">
+                    Experienced in teaching programming and core computer
+                    science concepts, with a focus on making complex topics
+                    accessible and engaging.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="testimonials">
+            <h3 class="h3 testimonials-title">Testimonials</h3>
+
+            <ul class="testimonials-list has-scrollbar">
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-4.png"
+                      alt="Javier Vilora"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Javier Vilora
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Zain's expertise in full stack development greatly
+                      contributed to the success of our project. His proficiency
+                      in JavaScript, Java, TypeScript, and C# is impressive. He
+                      is a valuable asset to any team.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-3.png"
+                      alt="Charline Catteeuw"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Charline Catteeuw
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Zain's ability to craft dynamic interfaces using React and
+                      Next.js provided an engaging user experience for our
+                      customers. His dedication and hard work are evident in the
+                      quality of his work.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/avatar-1.png"
+                      alt="Ali Abbas"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Ali Abbas
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Zain was brought on board to spearhead our corporate
+                      identity project. His work exceeded our expectations and
+                      left us thoroughly impressed. His vast experience is
+                      evident in his approach, and his dedication to
+                      understanding and catering to the client’s needs is
+                      commendable. Zain’s work is a testament to his expertise
+                      and commitment. His ability to deliver high-quality
+                      results while maintaining professionalism is truly
+                      remarkable. We are grateful for his contributions and
+                      would highly recommend his services
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="testimonials-item">
+                <div class="content-card" data-testimonials-item>
+                  <figure class="testimonials-avatar-box">
+                    <img
+                      src="./assets/images/my-avatar.png"
+                      alt="Tony Chee"
+                      width="60"
+                      data-testimonials-avatar
+                    />
+                  </figure>
+
+                  <h4
+                    class="h4 testimonials-item-title"
+                    data-testimonials-title
+                  >
+                    Tony Chee
+                  </h4>
+
+                  <div class="testimonials-text" data-testimonials-text>
+                    <p>
+                      Zain's technical writing skills are top-notch. He has the
+                      ability to produce clear, concise, and informative content
+                      on complex programming and computer science topics. His
+                      contributions have been invaluable to our team.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!--
+          - testimonials modal
+        -->
+
+          <div class="modal-container" data-modal-container>
+            <div class="overlay" data-overlay></div>
+
+            <section class="testimonials-modal">
+              <button class="modal-close-btn" data-modal-close-btn>
+                <ion-icon name="close-outline"></ion-icon>
+              </button>
+
+              <div class="modal-img-wrapper">
+                <figure class="modal-avatar-box">
+                  <img
+                    src="./assets/images/avatar-1.png"
+                    alt="Ali Abbas"
+                    width="80"
+                    data-modal-img
+                  />
+                </figure>
+              </div>
+
+              <div class="modal-content">
+                <h4 class="h3 modal-title" data-modal-title>Ali Abbas</h4>
+
+                <div data-modal-text>
+                  <p>
+                    Zain was brought on board to spearhead our corporate
+                    identity project. His work exceeded our expectations and
+                    left us thoroughly impressed. His vast experience is evident
+                    in his approach, and his dedication to understanding and
+                    catering to the client’s needs is commendable. Zain’s work
+                    is a testament to his expertise and commitment. His ability
+                    to deliver high-quality results while maintaining
+                    professionalism is truly remarkable. We are grateful for his
+                    contributions and would highly recommend his services
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+
+        <!--
+        - #RESUME
+      -->
+
+        <article class="resume" data-page="resume">
+          <header>
+            <h2 class="h2 article-title">Resume</h2>
+          </header>
+
+          <section class="resume-download">
+            <a
+              href="ZainQureshi_FullStack.pdf"
+              target="_blank"
+              class="resume-link"
+            >
+              <ion-icon name="document-text-outline"></ion-icon>
+              <span>My Resume</span>
+            </a>
+          </section>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="briefcase-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Experience</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Software Engineer</h4>
+
+                <span>May 2023 — Present</span>
+
+                <p class="timeline-text">
+                  Worked at GfK - An NIQ Company. Developed a WinForms
+                  application in C# for data processing, improving efficiency by
+                  30%. Automated the global supply of tires, resulting in a 15%
+                  increase in supply chain efficiency.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Full Stack Developer</h4>
+
+                <span>Jan 2023 — Present</span>
+
+                <p class="timeline-text">
+                  Worked at Cubicus.io. Led a CSS framework migration along with
+                  JavaScript to TypeScript migration, reducing page load times
+                  by 20% and enhancing user experience. Engineered APIs for an
+                  NFT marketplace, enhancing server response times by 15%, and
+                  crafted the front end for aesthetically pleasing designs and a
+                  fluid user experience. Designed a system to integrate
+                  alternative payment methods into Shopify stores, enhancing
+                  user experience and increasing sales conversions by 20%.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Web Developer</h4>
+
+                <span>Mar 2022 — May 2023</span>
+
+                <p class="timeline-text">
+                  Worked at MBE Canada. Spearheaded an ACH project and a call
+                  center software, enhancing the company's operational
+                  efficiency and scalability by 50%. Utilized MSSQL Stored
+                  Procedures and functions, boosting data access speed by 15%.
+                  Enhanced Triton and Hysoung ATMs functionality, improving user
+                  experience by 10%.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Full Stack Developer</h4>
+
+                <span>Jan 2023 — Mar 2023</span>
+
+                <p class="timeline-text">
+                  Worked at FemSol. Developed a dynamic user interface using
+                  React, boosting user engagement by 30%.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Web Developer</h4>
+
+                <span>Aug 2021 — Dec 2021</span>
+
+                <p class="timeline-text">
+                  Worked at Fairplays. Revamped web pages, plugins, and
+                  functionalities, enhancing user experience by 25%. Developed
+                  the front page by adding JQuery and AJAX with Agile
+                  methodology, ensuring timely delivery and quality, and
+                  improving page load speed by 20%.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Junior Programmer</h4>
+
+                <span>Jul 2017 — Oct 2018</span>
+
+                <p class="timeline-text">
+                  Worked at Technado (Pvt) Ltd. Developed an Employee Management
+                  System using VB.NET, fostering transparency and motivation,
+                  and improving efficiency by 30%. Created a real-time bank
+                  information display, providing users with accurate and timely
+                  information, and improving data access speed by 15%.
+                </p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="timeline">
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="book-outline"></ion-icon>
+              </div>
+
+              <h3 class="h3">Education</h3>
+            </div>
+
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Coventry University</h4>
+
+                <span>Oct 2018 — Dec 2021</span>
+
+                <p class="timeline-text">
+                  Bachelor of Computer Science (Hons.)
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">Tafs for A levels</h4>
+
+                <span>Aug 2016 — Aug 2018</span>
+
+                <p class="timeline-text">A levels in Computer Science</p>
+              </li>
+
+              <li class="timeline-item">
+                <h4 class="h4 timeline-item-title">
+                  Army Public School - (APSACS)
+                </h4>
+
+                <span>Jun 2014 — Aug 2016</span>
+
+                <p class="timeline-text">O levels in Biology, General</p>
+              </li>
+            </ol>
+          </section>
+
+          <section class="skill">
+            <h3 class="h3 skills-title">My skills</h3>
+
+            <ul class="skills-list content-card">
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Full Stack Development</h5>
+                  <data value="90">90%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 90%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Web Design</h5>
+                  <data value="85">85%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 85%"></div>
+                </div>
+              </li>
+
+              <li class="skills-item">
+                <div class="title-wrapper">
+                  <h5 class="h5">Technical Writing</h5>
+                  <data value="80">80%</data>
+                </div>
+
+                <div class="skill-progress-bg">
+                  <div class="skill-progress-fill" style="width: 80%"></div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <!--
+        - #PORTFOLIO
+      -->
+
+        <article class="portfolio" data-page="portfolio">
+          <header>
+            <h2 class="h2 article-title">Portfolio</h2>
+          </header>
+
+          <section class="projects">
+            <ul class="filter-list">
+              <li class="filter-item">
+                <button class="active" data-filter-btn>All</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Web design</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Applications</button>
+              </li>
+
+              <li class="filter-item">
+                <button data-filter-btn>Web development</button>
+              </li>
+            </ul>
+
+            <div class="filter-select-box">
+              <button class="filter-select" data-select>
+                <div class="select-value" data-selecct-value>
+                  Select category
+                </div>
+
+                <div class="select-icon">
+                  <ion-icon name="chevron-down"></ion-icon>
+                </div>
+              </button>
+
+              <ul class="select-list">
+                <li class="select-item">
+                  <button data-select-item>All</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Web design</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Applications</button>
+                </li>
+
+                <li class="select-item">
+                  <button data-select-item>Web development</button>
+                </li>
+              </ul>
+            </div>
+
+            <ul class="project-list">
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="https://tinykiwi.io/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (72).png"
+                      alt="TinyKiwi.io - Frontend Excellence"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    TinyKiwi.io - Frontend Excellence
+                  </h3>
+
+                  <p class="project-category">Web development</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="https://pixpel.io/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (78).png"
+                      alt="Pixpel.io - Backend Prowess"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Pixpel.io - Backend Prowess</h3>
+
+                  <p class="project-category">Web development</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web design"
+              >
+                <a href="https://nft-marketplace-exl5.vercel.app/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (74).png"
+                      alt="Scriptmatix Frontend - NFT Innovation"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    Scriptmatix Frontend - NFT Innovation
+                  </h3>
+
+                  <p class="project-category">Web design</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="applications"
+              >
+                <a href="https://payglo.io/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (77).png"
+                      alt="Payglo.io - Payment Gateway"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    Payglo.io - Payment Gateway Expertise
+                  </h3>
+
+                  <p class="project-category">Applications</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="applications"
+              >
+                <a href="https://github.com/zaynnqureshi17/ACH">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (80).png"
+                      alt="ACH, Canada"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">ACH, Canada</h3>
+
+                  <p class="project-category">Applications</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="applications"
+              >
+                <a href="https://cashwave.live/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (81).png"
+                      alt="ATM Controller, Canada"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">ATM Controller, Canada</h3>
+
+                  <p class="project-category">Applications</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web design"
+              >
+                <a href="https://thistimemedia.com/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (73).png"
+                      alt="ThisTimeMedia (TMM)"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">ThisTimeMedia (TMM)</h3>
+
+                  <p class="project-category">Web design</p>
+                </a>
+              </li>
+
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="https://www.studiocote.co/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (75).png"
+                      alt="Squarespace and Webflow - Platform Specialization"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">
+                    Squarespace and Webflow - Platform Specialization
+                  </h3>
+
+                  <p class="project-category">Web development</p>
+                </a>
+              </li>
+              <li
+                class="project-item active"
+                data-filter-item
+                data-category="web development"
+              >
+                <a href="https://fairplays.com.my/">
+                  <figure class="project-img">
+                    <div class="project-item-icon-box">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </div>
+
+                    <img
+                      src="./assets/images/projects/Screenshot (79).png"
+                      alt="Fairplays - Real Estate Website"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <h3 class="project-title">Fairplays - Real Estate Website</h3>
+
+                  <p class="project-category">Web development</p>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </article>
+
+        <!--
+        - #CONTACT
+      -->
+
+        <article class="contact" data-page="contact">
+          <header>
+            <h2 class="h2 article-title">Contact</h2>
+          </header>
+
+          <section class="mapbox" data-mapbox>
+            <figure>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.192711183558!2d67.0181733150016!3d24.86677998405338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33ea8f55e3755%3A0xec4046d4593e0e1d!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                width="400"
+                height="300"
+                loading="lazy"
+              ></iframe>
+            </figure>
+          </section>
+
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+          
+            <form action="https://api.web3forms.com/submit" method="POST" class="form" data-form>
+              <input type="hidden" name="access_key" value="ff081269-f4fa-4996-aebc-fb1216150bed">
+          
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-input"
+                  placeholder="Full name"
+                  required
+                  data-form-input
+                />
+          
+                <input
+                  type="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Email address"
+                  required
+                  data-form-input
+                />
+              </div>
+          
+              <textarea
+                name="message"
+                class="form-input"
+                placeholder="Your Message"
+                required
+                data-form-input
+              ></textarea>
+          
+              <button class="form-btn" type="submit" data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
+          
+          <script src="https://web3forms.com/client/script.js" async defer></script>
+          
+        </article>
+      </div>
+    </main>
+
+    <!--
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
+
+    <!--
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
