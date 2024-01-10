@@ -231,6 +231,33 @@ article.active {
   }
 }
 
+.resume-download {
+  text-align: center;
+  padding: 20px;
+  background-color: #f3fdff;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #1565c0;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.resume-link:hover {
+  color: #0d47a1;
+}
+
+.resume-link ion-icon {
+  font-size: 1.5em;
+}
+
 .h2,
 .h3,
 .h4,
@@ -2015,32 +2042,5 @@ textarea.form-input::-webkit-resizer {
 
   .timeline-text {
     max-width: 700px;
-  }
-
-  .resume-download {
-    text-align: center;
-    padding: 20px;
-    background-color: #f3fdff;
-    border-radius: 14px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-
-  .resume-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: #1565c0;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-
-  .resume-link:hover {
-    color: #0d47a1;
-  }
-
-  .resume-link ion-icon {
-    font-size: 1.5em;
   }
 }
