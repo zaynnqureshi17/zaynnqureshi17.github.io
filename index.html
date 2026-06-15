@@ -4,588 +4,330 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zain Qureshi — Senior Full-Stack Engineer & Team Lead</title>
-    <meta
-      name="description"
-      content="Senior Full-Stack Engineer & Team Lead building scalable fintech, payments, and healthtech products. .NET Core, Node.js, React, Next.js, Web3."
-    />
+    <meta name="description" content="Senior Full-Stack Engineer & Team Lead building scalable fintech, payments, and healthtech products." />
     <link rel="icon" href="assets/images/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #080b13;
-        --bg-2: #0b101c;
-        --surface: #111a2c;
-        --surface-2: #16203552;
-        --line: #1f2b44;
-        --line-soft: #18233a;
-        --text: #e8eefb;
-        --muted: #8e9cba;
-        --faint: #5e6c88;
-        --accent: #5b8cff;
-        --accent-2: #2ad6e6;
-        --grad: linear-gradient(120deg, #5b8cff 0%, #2ad6e6 100%);
-        --maxw: 1120px;
+        --paper: #f2f1ec;
+        --paper-2: #ecebe4;
+        --ink: #0c0d10;
+        --muted: #6c6a62;
+        --faint: #9b988e;
+        --accent: #ff4a2e;
+        --line: rgba(12, 13, 16, 0.14);
+        --line-soft: rgba(12, 13, 16, 0.07);
+        --maxw: 1180px;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
-      html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+      html { scroll-behavior: smooth; scroll-padding-top: 90px; }
       body {
         font-family: "Inter", system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
+        background: var(--paper);
+        color: var(--ink);
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
       a { color: inherit; text-decoration: none; }
       img { display: block; max-width: 100%; }
-      ::selection { background: var(--accent); color: #04060c; }
+      ::selection { background: var(--accent); color: var(--paper); }
       :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-
-      h1, h2, h3, .display { font-family: "Space Grotesk", sans-serif; letter-spacing: -0.02em; }
+      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+      .display { font-family: "Syne", sans-serif; }
       .mono { font-family: "JetBrains Mono", monospace; }
+      .accent { color: var(--accent); }
 
-      /* eyebrow / section label */
-      .eyebrow {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 12px;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--accent);
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 18px;
-      }
-      .eyebrow::before {
-        content: "";
-        width: 28px;
-        height: 1px;
-        background: var(--accent);
-        opacity: 0.7;
-      }
-      .section { padding: 96px 0; position: relative; }
-      .section-title {
-        font-size: clamp(28px, 4vw, 42px);
-        font-weight: 700;
-        line-height: 1.1;
-        margin-bottom: 14px;
-      }
-      .section-sub { color: var(--muted); max-width: 560px; }
+      /* section scaffolding */
+      .sec { padding: 110px 0; border-top: 1px solid var(--line); }
+      .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 56px; }
+      .sec-num { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; }
+      .sec-title { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(30px, 5vw, 56px); line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase; }
+      .sec-note { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); margin-left: auto; align-self: flex-end; letter-spacing: 0.04em; }
 
       /* ---------- NAV ---------- */
-      .nav {
-        position: fixed;
-        inset: 0 0 auto 0;
-        z-index: 100;
-        backdrop-filter: blur(14px);
-        background: rgba(8, 11, 19, 0.72);
-        border-bottom: 1px solid transparent;
-        transition: border-color 0.3s, background 0.3s;
-      }
-      .nav.scrolled { border-color: var(--line-soft); }
-      .nav-inner {
-        max-width: var(--maxw);
-        margin: 0 auto;
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .brand { display: flex; align-items: center; gap: 11px; font-family: "Space Grotesk"; font-weight: 700; }
-      .brand .mark {
-        width: 34px; height: 34px; border-radius: 9px;
-        background: var(--grad); color: #04060c;
-        display: grid; place-items: center; font-size: 15px; font-weight: 700;
-      }
-      .nav-links { display: flex; align-items: center; gap: 30px; }
-      .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-      .nav-links a:hover { color: var(--text); }
-      .btn {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-weight: 600; font-size: 14px; border-radius: 10px;
-        padding: 10px 18px; cursor: pointer; border: 1px solid transparent;
-        transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
-      }
-      .btn-primary { background: var(--grad); color: #04060c; }
-      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(91, 140, 255, 0.6); }
-      .btn-ghost { border-color: var(--line); color: var(--text); background: transparent; }
-      .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-      .nav-toggle { display: none; background: none; border: 0; color: var(--text); font-size: 26px; cursor: pointer; }
+      .nav { position: fixed; inset: 0 0 auto 0; z-index: 100; background: rgba(242, 241, 236, 0); transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s; border-bottom: 1px solid transparent; }
+      .nav.scrolled { background: rgba(242, 241, 236, 0.82); backdrop-filter: blur(12px); border-color: var(--line); }
+      .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+      .brand { font-family: "Syne", sans-serif; font-weight: 800; font-size: 17px; letter-spacing: -0.01em; }
+      .brand .accent { color: var(--accent); }
+      .nav-links { display: flex; align-items: center; gap: 26px; font-family: "JetBrains Mono", monospace; font-size: 13px; }
+      .nav-links a { color: var(--muted); transition: color 0.2s; }
+      .nav-links a:hover { color: var(--ink); }
+      .nav-links a.cv { color: var(--ink); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+      .nav-toggle { display: none; background: none; border: 0; font-size: 24px; cursor: pointer; color: var(--ink); }
 
       /* ---------- HERO ---------- */
-      .hero { position: relative; padding: 150px 0 90px; overflow: hidden; }
-      .hero-grid-bg {
-        position: absolute; inset: 0; z-index: 0; pointer-events: none;
-        background-image:
-          linear-gradient(rgba(31, 43, 68, 0.45) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(31, 43, 68, 0.45) 1px, transparent 1px);
-        background-size: 54px 54px, 54px 54px;
-        -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 28%, #000 50%, transparent 100%);
-        mask-image: radial-gradient(ellipse 95% 75% at 50% 28%, #000 50%, transparent 100%);
-      }
-      .aurora { position: absolute; border-radius: 50%; filter: blur(95px); z-index: 0; pointer-events: none; will-change: transform; }
-      .aurora.a1 { width: 540px; height: 540px; top: -140px; right: -60px; background: radial-gradient(circle, rgba(91, 140, 255, 0.55), transparent 68%); animation: float1 15s ease-in-out infinite; }
-      .aurora.a2 { width: 480px; height: 480px; bottom: -200px; left: -120px; background: radial-gradient(circle, rgba(42, 214, 230, 0.42), transparent 68%); animation: float2 19s ease-in-out infinite; }
-      .aurora.a3 { width: 360px; height: 360px; top: 30%; left: 42%; background: radial-gradient(circle, rgba(124, 92, 255, 0.3), transparent 70%); animation: float1 22s ease-in-out infinite; }
-      @keyframes float1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-46px, 44px); } }
-      @keyframes float2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(44px, -34px); } }
-      @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-      @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); } 50% { box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); } }
-      @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-      .hero .wrap { position: relative; z-index: 1; }
-      .hero-status {
-        display: inline-flex; align-items: center; gap: 9px;
-        font-family: "JetBrains Mono", monospace; font-size: 12.5px;
-        color: var(--muted); border: 1px solid var(--line);
-        background: var(--surface-2); padding: 7px 14px; border-radius: 999px; margin-bottom: 28px;
-      }
-      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; animation: pulse 2s ease-in-out infinite; }
-      .hero h1 { font-size: clamp(40px, 8vw, 86px); line-height: 0.98; font-weight: 700; }
-      .hero h1 .grad {
-        background: var(--grad); background-size: 220% 220%;
-        -webkit-background-clip: text; background-clip: text;
-        -webkit-text-fill-color: transparent; color: transparent;
-        animation: shimmer 7s ease-in-out infinite;
-      }
-      .hero .wrap > * { animation: heroIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-      .hero .wrap > *:nth-child(1) { animation-delay: 0.02s; }
-      .hero .wrap > *:nth-child(2) { animation-delay: 0.10s; }
-      .hero .wrap > *:nth-child(3) { animation-delay: 0.18s; }
-      .hero .wrap > *:nth-child(4) { animation-delay: 0.26s; }
-      .hero .wrap > *:nth-child(5) { animation-delay: 0.34s; }
-      .hero .wrap > *:nth-child(6) { animation-delay: 0.42s; }
-      .hero .wrap > *:nth-child(7) { animation-delay: 0.52s; }
-      .hero-role {
-        font-family: "Space Grotesk"; font-size: clamp(17px, 2.4vw, 23px);
-        color: var(--text); margin-top: 18px; font-weight: 500;
-      }
-      .hero-desc { color: var(--muted); font-size: 17px; max-width: 600px; margin-top: 18px; }
-      .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-      .icon-links { display: flex; gap: 10px; margin-top: 28px; }
-      .icon-links a {
-        width: 42px; height: 42px; border-radius: 11px; border: 1px solid var(--line);
-        display: grid; place-items: center; color: var(--muted);
-        transition: all 0.2s; background: var(--surface-2);
-      }
-      .icon-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
-      .icon-links svg { width: 19px; height: 19px; }
+      .hero { padding: 168px 0 90px; position: relative; }
+      .hero-meta { display: flex; justify-content: space-between; font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); letter-spacing: 0.04em; padding-bottom: 22px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+      .hero-meta .avail { display: inline-flex; align-items: center; gap: 9px; color: var(--ink); }
+      .hero-meta .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 2.4s ease-in-out infinite; }
+      .hero h1 { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(52px, 12vw, 150px); line-height: 0.84; letter-spacing: -0.04em; text-transform: uppercase; }
+      .hero h1 .ln2 { display: block; }
+      .hero-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 30px; margin-top: 40px; }
+      .hero-role { font-family: "JetBrains Mono", monospace; font-size: 14px; color: var(--ink); letter-spacing: 0.02em; max-width: 360px; }
+      .hero-role b { color: var(--accent); font-weight: 500; }
+      .hero-desc { font-size: 19px; color: var(--muted); max-width: 480px; }
+      .hero-cta { display: flex; gap: 26px; margin-top: 26px; align-items: center; }
+      .link-arrow { font-family: "JetBrains Mono", monospace; font-size: 14px; display: inline-flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--ink); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s, gap 0.2s; }
+      .link-arrow:hover { color: var(--accent); border-color: var(--accent); gap: 11px; }
+      .btn-cv { background: var(--accent); color: var(--paper); font-family: "JetBrains Mono", monospace; font-size: 13px; padding: 12px 20px; border-radius: 2px; display: inline-flex; gap: 8px; align-items: center; transition: transform 0.2s, box-shadow 0.2s; }
+      .btn-cv:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--ink); }
 
-      /* stat readout */
-      .stats {
-        display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
-        margin-top: 60px; border: 1px solid var(--line); border-radius: 14px;
-        overflow: hidden; background: var(--line);
+      /* ---------- WORK (hover-preview list) ---------- */
+      .work-list { border-bottom: 1px solid var(--line); }
+      .work-row { display: grid; grid-template-columns: 54px 1fr auto 40px; align-items: center; gap: 20px; padding: 26px 6px; border-top: 1px solid var(--line); position: relative; transition: padding 0.3s ease, color 0.3s; }
+      .wr-index { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--faint); }
+      .wr-name { font-family: "Syne", sans-serif; font-weight: 700; font-size: clamp(26px, 4vw, 46px); letter-spacing: -0.02em; line-height: 1; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+      .wr-cat { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); text-align: right; letter-spacing: 0.03em; }
+      .wr-arrow { font-size: 22px; color: var(--faint); text-align: right; transition: transform 0.3s, color 0.3s; }
+      .row-thumb { display: none; }
+      @media (hover: hover) and (min-width: 900px) {
+        .work-row:hover { padding-left: 24px; }
+        .work-row:hover .wr-name { transform: translateX(6px); color: var(--accent); }
+        .work-row:hover .wr-arrow { transform: translate(4px, -4px); color: var(--accent); }
+        .work-row:hover .wr-index { color: var(--accent); }
       }
-      .stat { background: var(--bg-2); padding: 22px 20px; }
-      .stat .num { font-family: "Space Grotesk"; font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; }
-      .stat .num.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-      .stat .lbl { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
-
-      /* ---------- WORK ---------- */
-      .work-grid {
-        display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 50px;
-      }
-      .card {
-        background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
-        overflow: hidden; display: flex; flex-direction: column;
-        transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
-        position: relative;
-      }
-      .card:hover { transform: translateY(-6px); border-color: rgba(91, 140, 255, 0.55); box-shadow: 0 26px 50px -28px rgba(0, 0, 0, 0.8); }
-      .card-media { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--bg-2); }
-      .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
-      .card:hover .card-media img { transform: scale(1.07); }
-      .card-media.ph { display: grid; place-items: center; background: linear-gradient(135deg, #16213a, #0d1526); }
-      .card-media.ph span { font-family: "Space Grotesk"; font-size: 44px; font-weight: 700; color: rgba(91,140,255,0.45); letter-spacing: 0.04em; }
-      .card-media.ph.tb { background: linear-gradient(135deg, #0f5f56, #0a3a37); }
-      .card-media.ph.tb span { font-size: 30px; color: rgba(173, 240, 230, 0.85); }
-      .card-body { padding: 18px 19px 20px; display: flex; flex-direction: column; flex: 1; }
-      .card-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 9px; }
-      .card-title { font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
-      .card-title .arrow { color: var(--faint); transition: transform 0.25s, color 0.25s; }
-      .card:hover .card-title .arrow { color: var(--accent); transform: translate(2px, -2px); }
-      .card-desc { color: var(--muted); font-size: 13.5px; margin-top: 8px; flex: 1; }
-      .card-stack { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--faint); margin-top: 14px; }
-      .card-private { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--faint); border: 1px solid var(--line); padding: 3px 8px; border-radius: 6px; }
+      .work-preview { position: fixed; top: 0; left: 0; width: min(32vw, 400px); aspect-ratio: 16 / 10; border: 1px solid var(--ink); background: var(--paper-2); z-index: 60; pointer-events: none; opacity: 0; transform: translate3d(calc(var(--x, 0) - 50%), calc(var(--y, 0) - 50%), 0) rotate(-4deg) scale(0.9); transition: opacity 0.3s ease, transform 0.18s ease-out; box-shadow: 10px 10px 0 rgba(12, 13, 16, 0.12); overflow: hidden; }
+      .work-preview.show { opacity: 1; transform: translate3d(calc(var(--x, 0) - 50%), calc(var(--y, 0) - 50%), 0) rotate(-4deg) scale(1); }
+      .work-preview img { width: 100%; height: 100%; object-fit: cover; }
 
       /* ---------- EXPERIENCE ---------- */
-      .timeline { margin-top: 50px; border-left: 1px solid var(--line); padding-left: 0; }
-      .xp {
-        position: relative; padding: 0 0 36px 34px;
-      }
-      .xp:last-child { padding-bottom: 0; }
-      .xp::before {
-        content: ""; position: absolute; left: -6.5px; top: 4px;
-        width: 12px; height: 12px; border-radius: 50%;
-        background: var(--bg); border: 2px solid var(--accent);
-      }
-      .xp.current::before { background: var(--accent); box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.18); }
-      .xp-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
-      .xp-role { font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; }
-      .xp-co { color: var(--accent); }
-      .xp-date { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--faint); margin-left: auto; white-space: nowrap; }
-      .xp-meta { font-size: 12.5px; color: var(--faint); margin: 3px 0 9px; }
-      .xp-meta .badge {
-        display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 10.5px;
-        color: var(--accent-2); border: 1px solid rgba(42,214,230,0.3); background: rgba(42,214,230,0.07);
-        padding: 1px 7px; border-radius: 5px; margin-right: 6px;
-      }
-      .xp-desc { color: var(--muted); font-size: 14px; max-width: 760px; }
-      .xp-earlier { padding-left: 34px; color: var(--faint); font-size: 13px; }
-      .xp-earlier b { color: var(--muted); }
+      .xp-row { padding: 26px 0; border-top: 1px solid var(--line); }
+      .xp-row:first-child { border-top: 0; }
+      .xp-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+      .xp-role { font-family: "Syne", sans-serif; font-weight: 700; font-size: clamp(19px, 2.4vw, 26px); letter-spacing: -0.01em; }
+      .xp-role .at { color: var(--accent); }
+      .xp-date { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); margin-left: auto; white-space: nowrap; }
+      .xp-meta { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--faint); margin: 6px 0 10px; }
+      .xp-meta .badge { color: var(--accent); border: 1px solid var(--accent); padding: 1px 7px; border-radius: 2px; margin-right: 7px; }
+      .xp-desc { color: var(--muted); font-size: 15px; max-width: 800px; }
 
       /* ---------- STACK ---------- */
-      .stack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 50px; }
-      .stack-cat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
-      .stack-cat h3 { font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-      .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-      .chip { font-size: 13px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; transition: border-color 0.2s, color 0.2s; }
-      .chip:hover { border-color: var(--accent); color: var(--accent); }
+      .stack-row { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+      .stack-key { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 3px; }
+      .stack-val { font-size: 17px; color: var(--ink); line-height: 1.7; }
+      .stack-val span { color: var(--faint); }
 
-      /* ---------- CV ---------- */
-      .cv-band {
-        background: linear-gradient(135deg, rgba(91,140,255,0.1), rgba(42,214,230,0.06));
-        border: 1px solid var(--line); border-radius: 20px;
-        padding: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 26px;
-      }
-      .cv-band h2 { font-size: 26px; font-weight: 700; }
-      .cv-band p { color: var(--muted); margin-top: 8px; max-width: 460px; }
+      /* ---------- CV BAND ---------- */
+      .cv-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 48px; border: 1px solid var(--ink); background: var(--paper-2); }
+      .cv-band h2 { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(26px, 4vw, 40px); line-height: 1; letter-spacing: -0.02em; }
+      .cv-band p { color: var(--muted); margin-top: 10px; font-size: 15px; max-width: 420px; }
 
-      /* ---------- CONTACT / FOOTER ---------- */
-      .contact { text-align: center; }
-      .contact h2 { font-size: clamp(32px, 6vw, 60px); font-weight: 700; line-height: 1.05; }
-      .contact .mail { display: inline-block; margin-top: 22px; font-family: "Space Grotesk"; font-size: clamp(18px, 3vw, 26px); }
+      /* ---------- CONTACT ---------- */
+      .contact { text-align: center; padding: 130px 0; }
+      .contact .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; }
+      .contact h2 { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(46px, 11vw, 150px); line-height: 0.88; letter-spacing: -0.03em; text-transform: uppercase; margin: 22px 0; }
+      .contact .mail { font-family: "JetBrains Mono", monospace; font-size: clamp(15px, 2.4vw, 22px); border-bottom: 2px solid var(--accent); padding-bottom: 4px; transition: color 0.2s; }
       .contact .mail:hover { color: var(--accent); }
-      footer { border-top: 1px solid var(--line-soft); padding: 30px 0; }
-      .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; color: var(--faint); font-size: 13px; font-family: "JetBrains Mono", monospace; }
+      .contact .socials { display: flex; justify-content: center; gap: 24px; margin-top: 38px; font-family: "JetBrains Mono", monospace; font-size: 13px; }
+      .contact .socials a { color: var(--muted); transition: color 0.2s; }
+      .contact .socials a:hover { color: var(--accent); }
+      footer { border-top: 1px solid var(--line); padding: 26px 0; }
+      .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--faint); }
 
-      /* reveal animation */
-      .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
       .reveal.in { opacity: 1; transform: none; }
+      @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255, 74, 46, 0.5); } 50% { box-shadow: 0 0 0 6px rgba(255, 74, 46, 0); } }
 
-      @media (max-width: 900px) {
-        .work-grid { grid-template-columns: repeat(2, 1fr); }
-      }
-      @media (max-width: 720px) {
+      @media (max-width: 860px) {
+        .wrap { padding: 0 22px; }
         .nav-links { display: none; }
-        .nav-links.open {
-          display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
-          background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 18px 24px 24px; gap: 18px; align-items: flex-start;
-        }
+        .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 20px 22px; gap: 16px; }
         .nav-toggle { display: block; }
-        .section { padding: 70px 0; }
+        .sec { padding: 70px 0; }
         .hero { padding: 130px 0 60px; }
-        .stats { grid-template-columns: repeat(2, 1fr); }
-        .work-grid { grid-template-columns: 1fr; }
-        .stack-grid { grid-template-columns: 1fr; }
+        .sec-head { flex-wrap: wrap; gap: 8px; margin-bottom: 34px; }
+        .sec-note { margin-left: 0; width: 100%; }
+        .work-row { grid-template-columns: 34px 1fr 28px; gap: 12px; padding: 20px 0; }
+        .wr-cat { display: none; }
+        .row-thumb { display: block; grid-column: 1 / -1; width: 100%; aspect-ratio: 16/10; object-fit: cover; border: 1px solid var(--line); margin-top: 14px; }
+        .stack-row { grid-template-columns: 1fr; gap: 8px; }
         .cv-band { padding: 30px; }
         .xp-date { margin-left: 0; width: 100%; }
       }
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .reveal { opacity: 1; transform: none; transition: none; }
+        .work-preview { display: none !important; }
         * { animation: none !important; }
       }
     </style>
   </head>
-  <body>
+  <body id="top">
     <!-- NAV -->
     <nav class="nav" id="nav">
       <div class="nav-inner">
-        <a href="#top" class="brand"><span class="mark">ZQ</span> Zain Qureshi</a>
+        <a href="#top" class="brand">Zain Qureshi<span class="accent">.</span></a>
         <div class="nav-links" id="navLinks">
-          <a href="#work">Work</a>
-          <a href="#experience">Experience</a>
-          <a href="#stack">Stack</a>
-          <a href="#contact">Contact</a>
-          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-primary">Download CV</a>
+          <a href="#work">work</a>
+          <a href="#experience">experience</a>
+          <a href="#stack">stack</a>
+          <a href="#contact">contact</a>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="cv">cv ↓</a>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
       </div>
     </nav>
 
     <!-- HERO -->
-    <header class="hero" id="top">
-      <div class="hero-grid-bg"></div>
+    <header class="hero">
       <div class="wrap">
-        <div class="hero-status"><span class="dot"></span> Open to senior remote roles — Fintech · Web3 · Healthtech</div>
-        <h1>Zain <span class="grad">Qureshi</span></h1>
-        <p class="hero-role">Senior Full-Stack Engineer &amp; Team Lead</p>
-        <p class="hero-desc">
-          I build scalable, production-grade products across fintech, payments, and
-          healthtech — from payment gateways and eKYC systems to AI-powered platforms.
-          Currently leading the Next.js team at Bonded.
-        </p>
-        <div class="hero-cta">
-          <a href="#work" class="btn btn-primary">View Work</a>
-          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-ghost">
-            Download CV
-            <svg viewBox="0 0 24 24" fill="none" width="15" height="15"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+        <div class="hero-meta">
+          <span class="avail"><span class="dot"></span> Open to senior remote roles</span>
+          <span>Karachi, PK · Remote · ’26</span>
         </div>
-        <div class="icon-links">
-          <a href="https://github.com/zaynnqureshi17" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0112 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
-          <a href="https://www.linkedin.com/in/zain-qureshi-zinion" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="mailto:zaynnqureshi.dev@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11H3v-11z" stroke="currentColor" stroke-width="2"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="2"/></svg></a>
-        </div>
-
-        <div class="stats">
-          <div class="stat"><div class="num grad" data-target="5" data-suffix="+">0</div><div class="lbl">Years building</div></div>
-          <div class="stat"><div class="num" data-target="15" data-suffix="+">0</div><div class="lbl">Products shipped</div></div>
-          <div class="stat"><div class="num" data-target="94" data-suffix="%">0</div><div class="lbl">Txn success rate</div></div>
-          <div class="stat"><div class="num" data-target="25" data-suffix="">0</div><div class="lbl">Team led</div></div>
+        <h1>Zain<span class="ln2">Qureshi<span class="accent">.</span></span></h1>
+        <div class="hero-bottom">
+          <div>
+            <p class="hero-role">Senior Full-Stack Engineer &amp; Team Lead<br /><b>Fintech · Payments · Web3 · Healthtech</b></p>
+          </div>
+          <div>
+            <p class="hero-desc">I build scalable, production-grade products — from payment gateways and eKYC systems to AI-powered platforms. Currently leading the Next.js team at Bonded.</p>
+            <div class="hero-cta">
+              <a href="#work" class="link-arrow">See the work ↗</a>
+              <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn-cv">Download CV ↓</a>
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- WORK -->
-    <section class="section" id="work">
+    <section class="sec" id="work">
       <div class="wrap">
-        <p class="eyebrow reveal">01 — Selected Work</p>
-        <h2 class="section-title reveal">Shipped products, real links.</h2>
-        <p class="section-sub reveal">A selection of fintech, e-commerce, healthtech, and Web3 platforms I've built and led.</p>
-
-        <div class="work-grid">
-          <!-- Bonded -->
-          <a class="card reveal" href="https://www.bonded.ai/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/bonded.png" alt="Bonded" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Healthtech · Team Lead</div>
-              <div class="card-title">Bonded — Dental Tech Platform <span class="arrow">↗</span></div>
-              <p class="card-desc">AI-powered dental &amp; orthodontic platform with in-browser DICOM imaging, Stripe payments, and a live iOS app.</p>
-              <div class="card-stack">Next.js · Prisma · Supabase · Anthropic</div>
-            </div>
+        <div class="sec-head">
+          <span class="sec-num">01</span>
+          <h2 class="sec-title">Selected<br />Work</h2>
+          <span class="sec-note reveal">12 shipped products · hover to preview</span>
+        </div>
+        <div class="work-list">
+          <a class="work-row reveal" href="https://www.bonded.ai/" target="_blank" data-img="./assets/images/projects/bonded.png">
+            <span class="wr-index">01</span><span class="wr-name">Bonded</span><span class="wr-cat">Healthtech · Team Lead</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/bonded.png" alt="Bonded" loading="lazy" />
           </a>
-          <!-- KiplePay -->
-          <a class="card reveal" href="https://kiplepay.com/users/login" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(13).png" alt="KiplePay" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Fintech · Payments</div>
-              <div class="card-title">KiplePay — Wallet &amp; Payments <span class="arrow">↗</span></div>
-              <p class="card-desc">DuitNow QR payment gateway with real-time settlement on PCI-DSS compliant microservices. 94% transaction success.</p>
-              <div class="card-stack">.NET Core · SignalR · Azure</div>
-            </div>
+          <a class="work-row reveal" href="https://kiplepay.com/users/login" target="_blank" data-img="./assets/images/projects/Screenshot%20(13).png">
+            <span class="wr-index">02</span><span class="wr-name">KiplePay</span><span class="wr-cat">Fintech · Payments</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(13).png" alt="KiplePay" loading="lazy" />
           </a>
-          <!-- QEF -->
-          <a class="card reveal" href="https://qefaccreditation.com/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(12).png" alt="QEF" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Web Platform</div>
-              <div class="card-title">QEF — Tournament Portal <span class="arrow">↗</span></div>
-              <p class="card-desc">Role-based tournament management for players, teams, and events with secure API integrations.</p>
-              <div class="card-stack">Next.js · TanStack Query · Shadcn</div>
-            </div>
+          <a class="work-row reveal" href="https://qefaccreditation.com/" target="_blank" data-img="./assets/images/projects/Screenshot%20(12).png">
+            <span class="wr-index">03</span><span class="wr-name">QEF Portal</span><span class="wr-cat">Platform</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(12).png" alt="QEF" loading="lazy" />
           </a>
-          <!-- IPP -->
-          <a class="card reveal" href="https://www.ipp-qatar.com/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(11).png" alt="IPP" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">E-commerce</div>
-              <div class="card-title">IPP — E-commerce Platform <span class="arrow">↗</span></div>
-              <p class="card-desc">CMS-like backend for products, orders, payments, and auth with auto-generated Swagger docs.</p>
-              <div class="card-stack">.NET Core · Node.js · PostgreSQL</div>
-            </div>
+          <a class="work-row reveal" href="https://www.ipp-qatar.com/" target="_blank" data-img="./assets/images/projects/Screenshot%20(11).png">
+            <span class="wr-index">04</span><span class="wr-name">IPP</span><span class="wr-cat">E-commerce</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(11).png" alt="IPP" loading="lazy" />
           </a>
-          <!-- eKYC -->
-          <a class="card reveal" href="https://kiplepay.com/kyc/register" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(10).png" alt="eKYC Portal" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Fintech · Identity</div>
-              <div class="card-title">eKYC Verification Portal <span class="arrow">↗</span></div>
-              <p class="card-desc">OCR-based document validation processing 5,000+ identity verifications monthly for instant merchant onboarding.</p>
-              <div class="card-stack">React · Redux · OCR · AWS</div>
-            </div>
+          <a class="work-row reveal" href="https://kiplepay.com/kyc/register" target="_blank" data-img="./assets/images/projects/Screenshot%20(10).png">
+            <span class="wr-index">05</span><span class="wr-name">eKYC Portal</span><span class="wr-cat">Fintech · Identity</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(10).png" alt="eKYC" loading="lazy" />
           </a>
-          <!-- Orchestrator -->
-          <a class="card reveal" href="https://orcastrator.qa/#/projects" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(9).png" alt="Orchestrator" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">DevOps · Automation</div>
-              <div class="card-title">Orchestrator — Test Automation <span class="arrow">↗</span></div>
-              <p class="card-desc">Cloud test-automation platform with event-driven parallel UI/API testing, integrated into CI/CD.</p>
-              <div class="card-stack">Azure Functions · .NET · Playwright</div>
-            </div>
+          <a class="work-row reveal" href="https://orcastrator.qa/#/projects" target="_blank" data-img="./assets/images/projects/Screenshot%20(9).png">
+            <span class="wr-index">06</span><span class="wr-name">Orchestrator</span><span class="wr-cat">DevOps · Automation</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(9).png" alt="Orchestrator" loading="lazy" />
           </a>
-          <!-- Nosh -->
-          <a class="card reveal" href="https://noshcommerce.com/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(18).png" alt="Nosh NFT" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Web3 · NFT</div>
-              <div class="card-title">Nosh — NFT Marketplace <span class="arrow">↗</span></div>
-              <p class="card-desc">Full-stack NFT minting and trading platform with Solidity smart contracts and on-chain interactions.</p>
-              <div class="card-stack">Next.js · Solidity · Web3.js</div>
-            </div>
+          <a class="work-row reveal" href="https://noshcommerce.com/" target="_blank" data-img="./assets/images/projects/Screenshot%20(18).png">
+            <span class="wr-index">07</span><span class="wr-name">Nosh</span><span class="wr-cat">Web3 · NFT</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(18).png" alt="Nosh" loading="lazy" />
           </a>
-          <!-- Pixpel -->
-          <a class="card reveal" href="https://pixpel.io/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(78).png" alt="Pixpel" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Web3 · Gaming</div>
-              <div class="card-title">Pixpel.io — Gaming Platform <span class="arrow">↗</span></div>
-              <p class="card-desc">Concordium-based Web3 gaming platform with an industry-first NFT warranty system and MiCA-compliant tokenomics.</p>
-              <div class="card-stack">Node.js · Concordium · Smart Contracts</div>
-            </div>
+          <a class="work-row reveal" href="https://pixpel.io/" target="_blank" data-img="./assets/images/projects/Screenshot%20(78).png">
+            <span class="wr-index">08</span><span class="wr-name">Pixpel.io</span><span class="wr-cat">Web3 · Gaming</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(78).png" alt="Pixpel" loading="lazy" />
           </a>
-          <!-- TinyKiwi -->
-          <a class="card reveal" href="https://tinykiwi.io/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(72).png" alt="TinyKiwi" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Web App</div>
-              <div class="card-title">TinyKiwi.io — Image Editor <span class="arrow">↗</span></div>
-              <p class="card-desc">Online image editor — built the snapshot feature, reusable components, and led a CSS framework migration.</p>
-              <div class="card-stack">Next.js · Chakra UI</div>
-            </div>
+          <a class="work-row reveal" href="https://tinykiwi.io/" target="_blank" data-img="./assets/images/projects/Screenshot%20(72).png">
+            <span class="wr-index">09</span><span class="wr-name">TinyKiwi.io</span><span class="wr-cat">Web App</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(72).png" alt="TinyKiwi" loading="lazy" />
           </a>
-          <!-- AMGYS -->
-          <a class="card reveal" href="https://www.amgys.com/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/amgys.jpg" alt="AMGYS" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Corporate Site</div>
-              <div class="card-title">AMGYS — Corporate Website <span class="arrow">↗</span></div>
-              <p class="card-desc">Marketing site for an interior design &amp; fit-out firm with animations, before/after sliders, and carousels.</p>
-              <div class="card-stack">Next.js · Swiper · AOS</div>
-            </div>
+          <a class="work-row reveal" href="https://toonbatch.vercel.app/" target="_blank" data-img="./assets/images/projects/toonbatch.png">
+            <span class="wr-index">10</span><span class="wr-name">ToonBatch</span><span class="wr-cat">EdTech · Passion</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/toonbatch.png" alt="ToonBatch" loading="lazy" />
           </a>
-          <!-- Cashwave -->
-          <a class="card reveal" href="https://cashwave.live/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(81).png" alt="Cashwave" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Fintech · ATM</div>
-              <div class="card-title">Cashwave — ATM Platform <span class="arrow">↗</span></div>
-              <p class="card-desc">Backend for 2,000+ ATMs with real-time transaction monitoring and electronic-journal features across Canada.</p>
-              <div class="card-stack">.NET Core · SQL Server · Azure</div>
-            </div>
+          <a class="work-row reveal" href="https://www.amgys.com/" target="_blank" data-img="./assets/images/projects/amgys.jpg">
+            <span class="wr-index">11</span><span class="wr-name">AMGYS</span><span class="wr-cat">Corporate Site</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/amgys.jpg" alt="AMGYS" loading="lazy" />
           </a>
-          <!-- ToonBatch -->
-          <a class="card reveal" href="https://toonbatch.vercel.app/" target="_blank">
-            <div class="card-media"><img src="./assets/images/projects/toonbatch.png" alt="ToonBatch" loading="lazy" /></div>
-            <div class="card-body">
-              <div class="card-tag">Passion Project · EdTech</div>
-              <div class="card-title">ToonBatch — Gamified Learning <span class="arrow">↗</span></div>
-              <p class="card-desc">Co-founded edtech platform making learning fun for kids — gamified courses, quizzes, and progress tracking.</p>
-              <div class="card-stack">Next.js · React · Tailwind</div>
-            </div>
+          <a class="work-row reveal" href="https://cashwave.live/" target="_blank" data-img="./assets/images/projects/Screenshot%20(81).png">
+            <span class="wr-index">12</span><span class="wr-name">Cashwave</span><span class="wr-cat">Fintech · ATM</span><span class="wr-arrow">↗</span>
+            <img class="row-thumb" src="./assets/images/projects/Screenshot%20(81).png" alt="Cashwave" loading="lazy" />
           </a>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section class="section" id="experience" style="background: var(--bg-2);">
+    <section class="sec" id="experience">
       <div class="wrap">
-        <p class="eyebrow reveal">02 — Experience</p>
-        <h2 class="section-title reveal">Where I've shipped.</h2>
-
-        <div class="timeline">
-          <div class="xp current reveal">
-            <div class="xp-head"><span class="xp-role">Team Lead, Next.js — <span class="xp-co">Bonded</span></span><span class="xp-date">Mar 2025 — Present</span></div>
-            <div class="xp-meta">Dental &amp; orthodontic tech platform (US) · Remote</div>
-            <p class="xp-desc">Lead the Next.js frontend team — shipping a production-grade dental platform with LLM-powered clinical features (Anthropic, OpenAI, Mastra), in-browser DICOM imaging, Stripe payments, encrypted patient data, React Native apps, and a Node.js image-sync service.</p>
-          </div>
-          <div class="xp current reveal">
-            <div class="xp-head"><span class="xp-role">Full-Stack Engineer — <span class="xp-co">NovaLabs</span></span><span class="xp-date">Sep 2024 — Present</span></div>
-            <div class="xp-meta">Freelance · Remote</div>
-            <p class="xp-desc">Built a multi-vendor e-commerce platform for Qatar University (Next.js, MUI, Express, PostgreSQL, MyFatoorah). Architected the QEF Tournament Portal and IPP e-commerce backend; automated E2E testing with Playwright, cutting regression time 60%.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Full-Stack Engineer — <span class="xp-co">Kiple (Green Packet)</span></span><span class="xp-date">Aug 2024 — Sep 2025</span></div>
-            <div class="xp-meta"><span class="badge">Bursa Malaysia–listed</span> BNM-regulated e-wallet · Contract · Remote</div>
-            <p class="xp-desc">Integrated the KiplePay payment gateway (.NET Core + SignalR) for real-time DuitNow QR transactions. Built a secure eKYC portal on PCI-DSS compliant Azure microservices with a 94% transaction success rate.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Integration Engineer — <span class="xp-co">Elastic Email</span></span><span class="xp-date">Sep 2025 — Jun 2026</span></div>
-            <div class="xp-meta"><span class="badge">Global email platform · 30k+ customers</span> Contract · Remote</div>
-            <p class="xp-desc">Built a custom Elastic Email community node for n8n (TypeScript) — REST API integration with API-key auth for email, templates, contacts, and campaign automation.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Software Engineer — <span class="xp-co">Stellarsoft</span></span><span class="xp-date">Sep 2024 — Feb 2025</span></div>
-            <div class="xp-meta">Freelance · Remote</div>
-            <p class="xp-desc">Architected "Orchestrator," a cloud test-automation platform (.NET Core, Azure Functions, Playwright) with event-driven parallel UI/API testing, integrated into CI/CD.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Software Engineer — <span class="xp-co">NielsenIQ (formerly GfK)</span></span><span class="xp-date">May 2023 — Present</span></div>
-            <div class="xp-meta"><span class="badge">World's #1 consumer-intelligence firm</span> Part-time · Hybrid</div>
-            <p class="xp-desc">Built C# WinForms data-processing apps (SFTP, Excel/PDF reporting via .NET &amp; LINQ) and web-crawling/data-extraction tools that automated recurring analyst workflows.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Project Lead &amp; Full-Stack Developer — <span class="xp-co">Cubicus</span></span><span class="xp-date">Jan 2023 — Jul 2024</span></div>
-            <div class="xp-meta">Remote</div>
-            <p class="xp-desc">Led a cross-functional team of 25 developers and designers (Agile/Scrum, Jira, client management). Built an NFT marketplace — Node.js/Express backend on PostgreSQL &amp; AWS, React/Tailwind frontend — plus a snapshot feature, a CSS framework migration, and WordPress multisite work.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Full-Stack Developer — <span class="xp-co">FemSol</span></span><span class="xp-date">Jan 2023 — Mar 2023</span></div>
-            <div class="xp-meta">Internship · Remote</div>
-            <p class="xp-desc">Built a property-listings web app end-to-end with React/Next.js, Redux, and Tailwind — authentication, listings, and search APIs — deployed on Vercel.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Web Developer — <span class="xp-co">MBE Canada</span></span><span class="xp-date">Mar 2022 — May 2023</span></div>
-            <div class="xp-meta">On-site</div>
-            <p class="xp-desc">Delivered ASP.NET apps and ACH/call-center software (50,000+ transactions/month) and ATM electronic-journal features across 500+ locations (Cashwave platform).</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Junior Web Developer — <span class="xp-co">Fairplays</span></span><span class="xp-date">Aug 2021 — Dec 2021</span></div>
-            <div class="xp-meta">Internship</div>
-            <p class="xp-desc">Built and improved web pages and plugins, configured Google Analytics, and ran Google-based SEO and ad campaigns; used Ajax/jQuery for interactive map features.</p>
-          </div>
-          <div class="xp reveal">
-            <div class="xp-head"><span class="xp-role">Junior Programmer — <span class="xp-co">Technado</span></span><span class="xp-date">Jul 2017 — Oct 2018</span></div>
-            <div class="xp-meta">Part-time</div>
-            <p class="xp-desc">Built an Employee Management System and payroll system in VB.NET, integrated ERP modules, and created a real-time bank currency-rate display (C#, ASP.NET, Ajax).</p>
-          </div>
+        <div class="sec-head">
+          <span class="sec-num">02</span>
+          <h2 class="sec-title">Where I've<br />Shipped</h2>
+          <span class="sec-note reveal">2017 — present</span>
         </div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Team Lead, Next.js <span class="at">— Bonded</span></span><span class="xp-date">Mar 2025 — Present</span></div><p class="xp-meta">Dental &amp; orthodontic tech platform (US) · Remote</p><p class="xp-desc">Lead the Next.js frontend team — shipping a production-grade dental platform with LLM-powered clinical features (Anthropic, OpenAI, Mastra), in-browser DICOM imaging, Stripe payments, encrypted patient data, React Native apps, and a Node.js image-sync service.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Full-Stack Engineer <span class="at">— NovaLabs</span></span><span class="xp-date">Sep 2024 — Present</span></div><p class="xp-meta">Freelance · Remote</p><p class="xp-desc">Built a multi-vendor e-commerce platform for Qatar University (Next.js, MUI, Express, PostgreSQL, MyFatoorah). Architected the QEF Tournament Portal and IPP e-commerce backend; automated E2E testing with Playwright, cutting regression time 60%.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Full-Stack Engineer <span class="at">— Kiple (Green Packet)</span></span><span class="xp-date">Aug 2024 — Sep 2025</span></div><p class="xp-meta"><span class="badge">Bursa Malaysia–listed</span> BNM-regulated e-wallet · Contract · Remote</p><p class="xp-desc">Integrated the KiplePay payment gateway (.NET Core + SignalR) for real-time DuitNow QR transactions. Built a secure eKYC portal on PCI-DSS compliant Azure microservices with a 94% transaction success rate.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Integration Engineer <span class="at">— Elastic Email</span></span><span class="xp-date">Sep 2025 — Jun 2026</span></div><p class="xp-meta"><span class="badge">Global email platform · 30k+ customers</span> Contract · Remote</p><p class="xp-desc">Built a custom Elastic Email community node for n8n (TypeScript) — REST API integration with API-key auth for email, templates, contacts, and campaign automation.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Software Engineer <span class="at">— Stellarsoft</span></span><span class="xp-date">Sep 2024 — Feb 2025</span></div><p class="xp-meta">Freelance · Remote</p><p class="xp-desc">Architected "Orchestrator," a cloud test-automation platform (.NET Core, Azure Functions, Playwright) with event-driven parallel UI/API testing, integrated into CI/CD.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Software Engineer <span class="at">— NielsenIQ (formerly GfK)</span></span><span class="xp-date">May 2023 — Present</span></div><p class="xp-meta"><span class="badge">World's #1 consumer-intelligence firm</span> Part-time · Hybrid</p><p class="xp-desc">Built C# WinForms data-processing apps (SFTP, Excel/PDF reporting via .NET &amp; LINQ) and web-crawling/data-extraction tools that automated recurring analyst workflows.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Project Lead &amp; Full-Stack Dev <span class="at">— Cubicus</span></span><span class="xp-date">Jan 2023 — Jul 2024</span></div><p class="xp-meta">Remote</p><p class="xp-desc">Led a cross-functional team of 25 developers and designers (Agile/Scrum, Jira). Built an NFT marketplace — Node.js/Express backend on PostgreSQL &amp; AWS, React/Tailwind frontend — plus a snapshot feature, CSS framework migration, and WordPress multisite work.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Full-Stack Developer <span class="at">— FemSol</span></span><span class="xp-date">Jan 2023 — Mar 2023</span></div><p class="xp-meta">Internship · Remote</p><p class="xp-desc">Built a property-listings web app end-to-end with React/Next.js, Redux, and Tailwind — authentication, listings, and search APIs — deployed on Vercel.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Web Developer <span class="at">— MBE Canada</span></span><span class="xp-date">Mar 2022 — May 2023</span></div><p class="xp-meta">On-site</p><p class="xp-desc">Delivered ASP.NET apps and ACH/call-center software (50,000+ transactions/month) and ATM electronic-journal features across 500+ locations (Cashwave platform).</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Junior Web Developer <span class="at">— Fairplays</span></span><span class="xp-date">Aug 2021 — Dec 2021</span></div><p class="xp-meta">Internship</p><p class="xp-desc">Built and improved web pages and plugins, configured Google Analytics, and ran Google-based SEO and ad campaigns; used Ajax/jQuery for interactive map features.</p></div>
+
+        <div class="xp-row reveal"><div class="xp-top"><span class="xp-role">Junior Programmer <span class="at">— Technado</span></span><span class="xp-date">Jul 2017 — Oct 2018</span></div><p class="xp-meta">Part-time</p><p class="xp-desc">Built an Employee Management System and payroll system in VB.NET, integrated ERP modules, and created a real-time bank currency-rate display (C#, ASP.NET, Ajax).</p></div>
       </div>
     </section>
 
     <!-- STACK -->
-    <section class="section" id="stack">
+    <section class="sec" id="stack">
       <div class="wrap">
-        <p class="eyebrow reveal">03 — Tech Stack</p>
-        <h2 class="section-title reveal">Tools I build with.</h2>
-        <div class="stack-grid">
-          <div class="stack-cat reveal"><h3>Languages</h3><div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">Rust</span><span class="chip">Solidity</span><span class="chip">Dart</span></div></div>
-          <div class="stack-cat reveal"><h3>Frontend</h3><div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Angular</span><span class="chip">Redux</span><span class="chip">TanStack Query</span><span class="chip">Tailwind</span><span class="chip">MUI</span></div></div>
-          <div class="stack-cat reveal"><h3>Backend &amp; APIs</h3><div class="chips"><span class="chip">Node.js</span><span class="chip">.NET Core</span><span class="chip">Express.js</span><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">SignalR</span><span class="chip">Prisma</span></div></div>
-          <div class="stack-cat reveal"><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Azure Functions</span><span class="chip">Docker</span><span class="chip">Supabase</span><span class="chip">CI/CD</span><span class="chip">Playwright</span><span class="chip">Git</span></div></div>
-          <div class="stack-cat reveal"><h3>Databases</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">SQL Server</span></div></div>
-          <div class="stack-cat reveal"><h3>Web3 &amp; AI</h3><div class="chips"><span class="chip">Solidity</span><span class="chip">Web3.js</span><span class="chip">Smart Contracts</span><span class="chip">Anthropic SDK</span><span class="chip">OpenAI SDK</span><span class="chip">Mastra</span></div></div>
+        <div class="sec-head">
+          <span class="sec-num">03</span>
+          <h2 class="sec-title">The<br />Stack</h2>
         </div>
+        <div class="stack-row reveal"><span class="stack-key">Languages</span><span class="stack-val">TypeScript <span>·</span> JavaScript <span>·</span> C# <span>·</span> Python <span>·</span> Rust <span>·</span> Solidity <span>·</span> Dart</span></div>
+        <div class="stack-row reveal"><span class="stack-key">Frontend</span><span class="stack-val">React <span>·</span> Next.js <span>·</span> Angular <span>·</span> Redux <span>·</span> TanStack Query <span>·</span> Tailwind <span>·</span> MUI</span></div>
+        <div class="stack-row reveal"><span class="stack-key">Backend / APIs</span><span class="stack-val">Node.js <span>·</span> .NET Core <span>·</span> Express.js <span>·</span> REST <span>·</span> GraphQL <span>·</span> SignalR <span>·</span> Prisma</span></div>
+        <div class="stack-row reveal"><span class="stack-key">Cloud / DevOps</span><span class="stack-val">AWS <span>·</span> Azure Functions <span>·</span> Docker <span>·</span> Supabase <span>·</span> CI/CD <span>·</span> Playwright <span>·</span> Git</span></div>
+        <div class="stack-row reveal"><span class="stack-key">Databases</span><span class="stack-val">PostgreSQL <span>·</span> MySQL <span>·</span> MongoDB <span>·</span> Redis <span>·</span> SQL Server</span></div>
+        <div class="stack-row reveal"><span class="stack-key">Web3 / AI</span><span class="stack-val">Solidity <span>·</span> Web3.js <span>·</span> Smart Contracts <span>·</span> Anthropic SDK <span>·</span> OpenAI SDK <span>·</span> Mastra</span></div>
       </div>
     </section>
 
-    <!-- CV BAND -->
-    <section class="section" style="padding-top: 0;">
+    <!-- CV -->
+    <section class="sec">
       <div class="wrap">
         <div class="cv-band reveal">
           <div>
-            <p class="eyebrow" style="margin-bottom: 12px;">Résumé</p>
-            <h2>One-page CV, recruiter-ready.</h2>
-            <p>An ATS-optimized summary of my experience, projects, and stack — verified to a single page.</p>
+            <h2>Want the one-pager?</h2>
+            <p>An ATS-optimized CV — experience, projects, and stack on a single page.</p>
           </div>
-          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-primary" style="padding: 14px 24px;">
-            Download CV (PDF)
-            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn-cv" style="padding: 15px 26px; font-size: 14px;">Download CV ↓</a>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section contact" id="contact" style="background: var(--bg-2);">
+    <section class="contact" id="contact">
       <div class="wrap">
-        <p class="eyebrow reveal" style="justify-content: center;">04 — Contact</p>
-        <h2 class="reveal">Let's build something.</h2>
-        <p class="section-sub reveal" style="margin: 14px auto 0;">Open to senior full-stack, backend, and team-lead roles in fintech &amp; Web3 — remote.</p>
+        <span class="eyebrow reveal">04 / CONTACT</span>
+        <h2 class="reveal">Let's<br />build.</h2>
         <a href="mailto:zaynnqureshi.dev@gmail.com" class="mail reveal">zaynnqureshi.dev@gmail.com</a>
-        <div class="icon-links reveal" style="justify-content: center;">
-          <a href="https://github.com/zaynnqureshi17" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0112 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
-          <a href="https://www.linkedin.com/in/zain-qureshi-zinion" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="mailto:zaynnqureshi.dev@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11H3v-11z" stroke="currentColor" stroke-width="2"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="2"/></svg></a>
+        <div class="socials reveal">
+          <a href="https://github.com/zaynnqureshi17" target="_blank">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/zain-qureshi-zinion" target="_blank">LinkedIn ↗</a>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank">CV ↓</a>
         </div>
       </div>
     </section>
@@ -594,40 +336,43 @@
       <div class="wrap foot-inner">
         <span>© 2026 Zain Qureshi</span>
         <span>Karachi, Pakistan · Remote</span>
-        <span>Built &amp; designed by Zain Qureshi</span>
+        <span>Designed &amp; built by Zain</span>
       </div>
     </footer>
 
+    <div class="work-preview" id="workPreview"><img src="" alt="" /></div>
+
     <script>
-      // nav scrolled state
       const nav = document.getElementById("nav");
       const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
 
-      // mobile menu
       const toggle = document.getElementById("navToggle");
       const links = document.getElementById("navLinks");
       toggle.addEventListener("click", () => links.classList.toggle("open"));
       links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
 
-      // count-up stats
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      document.querySelectorAll(".stat .num[data-target]").forEach((el) => {
-        const target = +el.dataset.target;
-        const suffix = el.dataset.suffix || "";
-        if (reduceMotion) { el.textContent = target + suffix; return; }
-        const dur = 1500, t0 = performance.now();
-        const tick = (now) => {
-          const p = Math.min((now - t0) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(target * eased) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
+      // hover-to-preview project list
+      const list = document.querySelector(".work-list");
+      const preview = document.getElementById("workPreview");
+      const previewImg = preview.querySelector("img");
+      const canHover = window.matchMedia("(hover: hover) and (min-width: 900px)").matches
+        && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (canHover && list) {
+        list.querySelectorAll(".work-row").forEach((row) => {
+          row.addEventListener("mouseenter", () => {
+            previewImg.src = row.dataset.img;
+            preview.classList.add("show");
+          });
+        });
+        list.addEventListener("mouseleave", () => preview.classList.remove("show"));
+        window.addEventListener("mousemove", (e) => {
+          preview.style.setProperty("--x", e.clientX + "px");
+          preview.style.setProperty("--y", e.clientY + "px");
+        }, { passive: true });
+      }
 
-      // scroll reveal
       const io = new IntersectionObserver(
         (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
         { threshold: 0.12 }
