@@ -2217,3 +2217,33 @@ a, button { transition: color 0.2s ease, background 0.2s ease, transform 0.2s ea
     transition-duration: 0.001ms !important;
   }
 }
+
+/* ===== Project gallery: aligned, contained cards ===== */
+.project-list { gap: 22px; align-items: stretch; }
+.project-item > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 12px 16px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+.project-item > a:hover {
+  box-shadow: 0 20px 42px -20px rgba(15, 23, 42, 0.25);
+  border-color: rgba(47, 107, 255, 0.4);
+}
+.project-img { height: 168px; margin-bottom: 14px; }
+.project-title {
+  margin-left: 0;
+  min-height: 2.5em;        /* reserve 2 lines so all categories align */
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.project-category {
+  margin-left: 0;
+  margin-top: auto;         /* pin category to card bottom */
+  color: var(--accent);
+  font-weight: 500;
+}
