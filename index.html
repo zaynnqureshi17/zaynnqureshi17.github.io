@@ -1,1311 +1,596 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zain's Portfolio</title>
-
-    <!--
-    - favicon
-  -->
-    <link
-      rel="shortcut icon"
-      href="./assets/images/favicon.png"
-      type="image/x-icon"
+    <title>Zain Qureshi — Senior Full-Stack Engineer & Team Lead</title>
+    <meta
+      name="description"
+      content="Senior Full-Stack Engineer & Team Lead building scalable fintech, payments, and healthtech products. .NET Core, Node.js, React, Next.js, Web3."
     />
-
-    <!--
-    - custom css link
-  -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
-    <!--
-    - google font link
-  -->
+    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        --bg: #080b13;
+        --bg-2: #0b101c;
+        --surface: #111a2c;
+        --surface-2: #16203552;
+        --line: #1f2b44;
+        --line-soft: #18233a;
+        --text: #e8eefb;
+        --muted: #8e9cba;
+        --faint: #5e6c88;
+        --accent: #5b8cff;
+        --accent-2: #2ad6e6;
+        --grad: linear-gradient(120deg, #5b8cff 0%, #2ad6e6 100%);
+        --maxw: 1120px;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { display: block; max-width: 100%; }
+      ::selection { background: var(--accent); color: #04060c; }
+      :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+      h1, h2, h3, .display { font-family: "Space Grotesk", sans-serif; letter-spacing: -0.02em; }
+      .mono { font-family: "JetBrains Mono", monospace; }
+
+      /* eyebrow / section label */
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: var(--accent);
+        opacity: 0.7;
+      }
+      .section { padding: 96px 0; position: relative; }
+      .section-title {
+        font-size: clamp(28px, 4vw, 42px);
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 14px;
+      }
+      .section-sub { color: var(--muted); max-width: 560px; }
+
+      /* ---------- NAV ---------- */
+      .nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 100;
+        backdrop-filter: blur(14px);
+        background: rgba(8, 11, 19, 0.72);
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.3s, background 0.3s;
+      }
+      .nav.scrolled { border-color: var(--line-soft); }
+      .nav-inner {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand { display: flex; align-items: center; gap: 11px; font-family: "Space Grotesk"; font-weight: 700; }
+      .brand .mark {
+        width: 34px; height: 34px; border-radius: 9px;
+        background: var(--grad); color: #04060c;
+        display: grid; place-items: center; font-size: 15px; font-weight: 700;
+      }
+      .nav-links { display: flex; align-items: center; gap: 30px; }
+      .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+      .nav-links a:hover { color: var(--text); }
+      .btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-weight: 600; font-size: 14px; border-radius: 10px;
+        padding: 10px 18px; cursor: pointer; border: 1px solid transparent;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+      }
+      .btn-primary { background: var(--grad); color: #04060c; }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -10px rgba(91, 140, 255, 0.6); }
+      .btn-ghost { border-color: var(--line); color: var(--text); background: transparent; }
+      .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+      .nav-toggle { display: none; background: none; border: 0; color: var(--text); font-size: 26px; cursor: pointer; }
+
+      /* ---------- HERO ---------- */
+      .hero { position: relative; padding: 150px 0 90px; overflow: hidden; }
+      .hero-grid-bg {
+        position: absolute; inset: 0; z-index: 0; pointer-events: none;
+        background-image:
+          radial-gradient(circle at 75% 12%, rgba(91, 140, 255, 0.22), transparent 42%),
+          radial-gradient(circle at 18% 88%, rgba(42, 214, 230, 0.14), transparent 45%),
+          linear-gradient(rgba(31, 43, 68, 0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31, 43, 68, 0.5) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 54px 54px, 54px 54px;
+        -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 55%, transparent 100%);
+        mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 55%, transparent 100%);
+      }
+      .hero .wrap { position: relative; z-index: 1; }
+      .hero-status {
+        display: inline-flex; align-items: center; gap: 9px;
+        font-family: "JetBrains Mono", monospace; font-size: 12.5px;
+        color: var(--muted); border: 1px solid var(--line);
+        background: var(--surface-2); padding: 7px 14px; border-radius: 999px; margin-bottom: 28px;
+      }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; }
+      .hero h1 { font-size: clamp(40px, 8vw, 86px); line-height: 0.98; font-weight: 700; }
+      .hero h1 .grad {
+        background: var(--grad); -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent; color: transparent;
+      }
+      .hero-role {
+        font-family: "Space Grotesk"; font-size: clamp(17px, 2.4vw, 23px);
+        color: var(--text); margin-top: 18px; font-weight: 500;
+      }
+      .hero-desc { color: var(--muted); font-size: 17px; max-width: 600px; margin-top: 18px; }
+      .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+      .icon-links { display: flex; gap: 10px; margin-top: 28px; }
+      .icon-links a {
+        width: 42px; height: 42px; border-radius: 11px; border: 1px solid var(--line);
+        display: grid; place-items: center; color: var(--muted);
+        transition: all 0.2s; background: var(--surface-2);
+      }
+      .icon-links a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+      .icon-links svg { width: 19px; height: 19px; }
+
+      /* stat readout */
+      .stats {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+        margin-top: 60px; border: 1px solid var(--line); border-radius: 14px;
+        overflow: hidden; background: var(--line);
+      }
+      .stat { background: var(--bg-2); padding: 22px 20px; }
+      .stat .num { font-family: "Space Grotesk"; font-size: 30px; font-weight: 700; }
+      .stat .num .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+      .stat .lbl { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
+
+      /* ---------- WORK ---------- */
+      .work-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 50px;
+      }
+      .card {
+        background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+        overflow: hidden; display: flex; flex-direction: column;
+        transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s, box-shadow 0.3s;
+        position: relative;
+      }
+      .card:hover { transform: translateY(-6px); border-color: rgba(91, 140, 255, 0.55); box-shadow: 0 26px 50px -28px rgba(0, 0, 0, 0.8); }
+      .card-media { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--bg-2); }
+      .card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+      .card:hover .card-media img { transform: scale(1.07); }
+      .card-media.ph { display: grid; place-items: center; background: linear-gradient(135deg, #16213a, #0d1526); }
+      .card-media.ph span { font-family: "Space Grotesk"; font-size: 44px; font-weight: 700; color: rgba(91,140,255,0.45); letter-spacing: 0.04em; }
+      .card-media.ph.tb { background: linear-gradient(135deg, #0f5f56, #0a3a37); }
+      .card-media.ph.tb span { font-size: 30px; color: rgba(173, 240, 230, 0.85); }
+      .card-body { padding: 18px 19px 20px; display: flex; flex-direction: column; flex: 1; }
+      .card-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 9px; }
+      .card-title { font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+      .card-title .arrow { color: var(--faint); transition: transform 0.25s, color 0.25s; }
+      .card:hover .card-title .arrow { color: var(--accent); transform: translate(2px, -2px); }
+      .card-desc { color: var(--muted); font-size: 13.5px; margin-top: 8px; flex: 1; }
+      .card-stack { font-family: "JetBrains Mono", monospace; font-size: 11.5px; color: var(--faint); margin-top: 14px; }
+      .card-private { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--faint); border: 1px solid var(--line); padding: 3px 8px; border-radius: 6px; }
+
+      /* ---------- EXPERIENCE ---------- */
+      .timeline { margin-top: 50px; border-left: 1px solid var(--line); padding-left: 0; }
+      .xp {
+        position: relative; padding: 0 0 36px 34px;
+      }
+      .xp:last-child { padding-bottom: 0; }
+      .xp::before {
+        content: ""; position: absolute; left: -6.5px; top: 4px;
+        width: 12px; height: 12px; border-radius: 50%;
+        background: var(--bg); border: 2px solid var(--accent);
+      }
+      .xp.current::before { background: var(--accent); box-shadow: 0 0 0 4px rgba(91, 140, 255, 0.18); }
+      .xp-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+      .xp-role { font-family: "Space Grotesk"; font-size: 18px; font-weight: 600; }
+      .xp-co { color: var(--accent); }
+      .xp-date { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--faint); margin-left: auto; white-space: nowrap; }
+      .xp-meta { font-size: 12.5px; color: var(--faint); margin: 3px 0 9px; }
+      .xp-meta .badge {
+        display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+        color: var(--accent-2); border: 1px solid rgba(42,214,230,0.3); background: rgba(42,214,230,0.07);
+        padding: 1px 7px; border-radius: 5px; margin-right: 6px;
+      }
+      .xp-desc { color: var(--muted); font-size: 14px; max-width: 760px; }
+      .xp-earlier { padding-left: 34px; color: var(--faint); font-size: 13px; }
+      .xp-earlier b { color: var(--muted); }
+
+      /* ---------- STACK ---------- */
+      .stack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 50px; }
+      .stack-cat { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+      .stack-cat h3 { font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip { font-size: 13px; color: var(--text); background: var(--bg-2); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; transition: border-color 0.2s, color 0.2s; }
+      .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+      /* ---------- CV ---------- */
+      .cv-band {
+        background: linear-gradient(135deg, rgba(91,140,255,0.1), rgba(42,214,230,0.06));
+        border: 1px solid var(--line); border-radius: 20px;
+        padding: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 26px;
+      }
+      .cv-band h2 { font-size: 26px; font-weight: 700; }
+      .cv-band p { color: var(--muted); margin-top: 8px; max-width: 460px; }
+
+      /* ---------- CONTACT / FOOTER ---------- */
+      .contact { text-align: center; }
+      .contact h2 { font-size: clamp(32px, 6vw, 60px); font-weight: 700; line-height: 1.05; }
+      .contact .mail { display: inline-block; margin-top: 22px; font-family: "Space Grotesk"; font-size: clamp(18px, 3vw, 26px); }
+      .contact .mail:hover { color: var(--accent); }
+      footer { border-top: 1px solid var(--line-soft); padding: 30px 0; }
+      .foot-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; color: var(--faint); font-size: 13px; font-family: "JetBrains Mono", monospace; }
+
+      /* reveal animation */
+      .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+      .reveal.in { opacity: 1; transform: none; }
+
+      @media (max-width: 900px) {
+        .work-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 720px) {
+        .nav-links { display: none; }
+        .nav-links.open {
+          display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0;
+          background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 18px 24px 24px; gap: 18px; align-items: flex-start;
+        }
+        .nav-toggle { display: block; }
+        .section { padding: 70px 0; }
+        .hero { padding: 130px 0 60px; }
+        .stats { grid-template-columns: repeat(2, 1fr); }
+        .work-grid { grid-template-columns: 1fr; }
+        .stack-grid { grid-template-columns: 1fr; }
+        .cv-band { padding: 30px; }
+        .xp-date { margin-left: 0; width: 100%; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        * { animation: none !important; }
+      }
+    </style>
   </head>
-
   <body>
-    <!--
-    - #MAIN
-  -->
-
-    <main>
-      <!--
-      - #SIDEBAR
-    -->
-
-      <aside class="sidebar" data-sidebar>
-        <div class="sidebar-info">
-          <figure class="avatar-box">
-            <img
-              src="./assets/images/img-xIod3bn49InuT6Ya6UpuQ3lf.png"
-              alt="Zain Qureshi"
-              width="80"
-            />
-          </figure>
-
-          <div class="info-content">
-            <h1 class="name" title="Zain Qureshi">
-              <span class="name-highlight">Zain</span> Qureshi
-            </h1>
-
-            <div class="title-wrapper">
-              <p class="title">Senior Full-Stack Engineer &amp; Team Lead</p>
-              <div class="title-accent"></div>
-            </div>
-
-            <div class="specialties">
-              <span class="specialty-tag">Web3</span>
-              <span class="specialty-tag">Blockchain</span>
-              <span class="specialty-tag">Fintech</span>
-            </div>
-          </div>
-
-          <button class="info_more-btn" data-sidebar-btn>
-            <span>Show Contacts</span>
-
-            <ion-icon name="chevron-down"></ion-icon>
-          </button>
+    <!-- NAV -->
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <a href="#top" class="brand"><span class="mark">ZQ</span> Zain Qureshi</a>
+        <div class="nav-links" id="navLinks">
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#stack">Stack</a>
+          <a href="#contact">Contact</a>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-primary">Download CV</a>
         </div>
-
-        <div class="sidebar-info_more">
-          <div class="separator"></div>
-
-          <ul class="contacts-list">
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="mail-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Email</p>
-
-                <a href="mailto:zaynnqureshi.dev@gmail.com" class="contact-link"
-                  >zaynnqureshi.dev@gmail.com</a
-                >
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="phone-portrait-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Phone</p>
-
-                <a href="tel:+923049778171" class="contact-link"
-                  >+(92) 304 977 8171</a
-                >
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="calendar-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Birthday</p>
-
-                <time datetime="1999-06-08">June 08, 1999</time>
-              </div>
-            </li>
-
-            <li class="contact-item">
-              <div class="icon-box">
-                <ion-icon name="location-outline"></ion-icon>
-              </div>
-
-              <div class="contact-info">
-                <p class="contact-title">Location</p>
-
-                <address>Karachi, Pakistan</address>
-              </div>
-            </li>
-          </ul>
-
-          <div class="separator"></div>
-
-          <ul class="social-list">
-            <li class="social-item">
-              <a
-                href="https://www.linkedin.com/in/zain-qureshi-zinion"
-                class="social-link"
-                target="_blank"
-              >
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-            <li class="social-item">
-              <a
-                href="https://github.com/zaynnqureshi17"
-                class="social-link"
-                target="_blank"
-              >
-                <ion-icon name="logo-github"></ion-icon>
-              </a>
-            </li>
-
-            <li class="social-item">
-              <a
-                href="https://twitter.com/Zin_Ion"
-                class="social-link"
-                target="_blank"
-              >
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <!--
-      - #main-content
-    -->
-
-      <div class="main-content">
-        <!--
-        - #NAVBAR
-      -->
-
-        <nav class="navbar">
-          <ul class="navbar-list">
-            <li class="navbar-item">
-              <button class="navbar-link active" data-nav-link>About</button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Resume</button>
-            </li>
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Portfolio</button>
-            </li>
-
-            <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li> -->
-
-            <li class="navbar-item">
-              <button class="navbar-link" data-nav-link>Contact</button>
-            </li>
-          </ul>
-        </nav>
-
-        <!--
-        - #ABOUT
-      -->
-
-        <article class="about active" data-page="about">
-          <header>
-            <h2 class="h2 article-title">About me</h2>
-          </header>
-
-          <section class="about-text">
-            <p>
-              I'm Zain Qureshi, a dedicated Full Stack Developer from Pakistan
-              with a solid foundation in web development and computer science. I
-              thrive on transforming complex challenges into elegant, intuitive,
-              and responsive digital solutions.
-            </p>
-            <p>
-              My mission is to build websites and applications that are not only
-              highly functional and scalable, but also visually compelling and
-              tailored to your brand's identity. I bring a personal touch to
-              every project, ensuring your message shines through. With
-              extensive expertise in modern technologies like JavaScript, Java,
-              TypeScript, and C#, I deliver innovative solutions that engage and
-              inspire.
-            </p>
-          </section>
-
-          <!--
-          - service
-        -->
-
-          <section class="service">
-            <h3 class="h3 service-title">What I'm Doing</h3>
-            <ul class="service-list">
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-development-50.png"
-                    alt="Full Stack Development icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Full Stack Development</h4>
-                  <p class="service-item-text">
-                    Building end-to-end digital solutions with modern frameworks
-                    like Next.js, Node.js, React, and .NET.
-                  </p>
-                </div>
-              </li>
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-developer-mode-50.png"
-                    alt="Mobile Apps icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Mobile Apps</h4>
-                  <p class="service-item-text">
-                    Developing robust mobile applications for iOS and Android
-                    using native and cross-platform technologies.
-                  </p>
-                </div>
-              </li>
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-web-design-50.png"
-                    alt="Web Design icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Web Design</h4>
-                  <p class="service-item-text">
-                    Crafting dynamic, responsive, and visually engaging
-                    interfaces using React and Next.js.
-                  </p>
-                </div>
-              </li>
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-cloud-computing-64.png"
-                    alt="Cloud Computing icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Cloud Computing</h4>
-                  <p class="service-item-text">
-                    Leveraging AWS and Azure Functions to build robust,
-                    scalable, and secure cloud solutions.
-                  </p>
-                </div>
-              </li>
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-writing-30.png"
-                    alt="Technical Writing icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Technical Writing</h4>
-                  <p class="service-item-text">
-                    Producing clear, concise, and engaging content on advanced
-                    programming and computer science topics.
-                  </p>
-                </div>
-              </li>
-              <li class="service-item">
-                <div class="service-icon-box">
-                  <img
-                    src="./assets/images/icons/icons8-teaching-50.png"
-                    alt="Teaching icon"
-                    width="40"
-                  />
-                </div>
-                <div class="service-content-box">
-                  <h4 class="h4 service-item-title">Teaching</h4>
-                  <p class="service-item-text">
-                    Making complex technical concepts accessible and engaging
-                    through hands-on instruction.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <section class="testimonials">
-            <h3 class="h3 testimonials-title">Testimonials</h3>
-
-            <ul class="testimonials-list has-scrollbar">
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="./assets/images/avatar-4.png"
-                      alt="Javier Vilora"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Javier Vilora
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Zain's expertise in full stack development greatly
-                      contributed to the success of our project. His proficiency
-                      in JavaScript, Java, TypeScript, and C# is impressive. He
-                      is a valuable asset to any team.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="./assets/images/avatar-3.png"
-                      alt="Charline Catteeuw"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Charline Catteeuw
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Zain's ability to craft dynamic interfaces using React and
-                      Next.js provided an engaging user experience for our
-                      customers. His dedication and hard work are evident in the
-                      quality of his work.
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="./assets/images/avatar-1.png"
-                      alt="Ali Abbas"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Ali Abbas
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Zain was brought on board to spearhead our corporate
-                      identity project. His work exceeded our expectations and
-                      left us thoroughly impressed. His vast experience is
-                      evident in his approach, and his dedication to
-                      understanding and catering to the client's needs is
-                      commendable. Zain's work is a testament to his expertise
-                      and commitment. His ability to deliver high-quality
-                      results while maintaining professionalism is truly
-                      remarkable. We are grateful for his contributions and
-                      would highly recommend his services
-                    </p>
-                  </div>
-                </div>
-              </li>
-
-              <li class="testimonials-item">
-                <div class="content-card" data-testimonials-item>
-                  <figure class="testimonials-avatar-box">
-                    <img
-                      src="./assets/images/my-avatar.png"
-                      alt="Tony Chee"
-                      width="60"
-                      data-testimonials-avatar
-                    />
-                  </figure>
-
-                  <h4
-                    class="h4 testimonials-item-title"
-                    data-testimonials-title
-                  >
-                    Tony Chee
-                  </h4>
-
-                  <div class="testimonials-text" data-testimonials-text>
-                    <p>
-                      Zain's technical writing skills are top-notch. He has the
-                      ability to produce clear, concise, and informative content
-                      on complex programming and computer science topics. His
-                      contributions have been invaluable to our team.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <!--
-          - testimonials modal
-        -->
-
-          <div class="modal-container" data-modal-container>
-            <div class="overlay" data-overlay></div>
-
-            <section class="testimonials-modal">
-              <button class="modal-close-btn" data-modal-close-btn>
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-
-              <div class="modal-img-wrapper">
-                <figure class="modal-avatar-box">
-                  <img
-                    src="./assets/images/avatar-1.png"
-                    alt="Ali Abbas"
-                    width="80"
-                    data-modal-img
-                  />
-                </figure>
-              </div>
-
-              <div class="modal-content">
-                <h4 class="h3 modal-title" data-modal-title>Ali Abbas</h4>
-
-                <div data-modal-text>
-                  <p>
-                    Zain was brought on board to spearhead our corporate
-                    identity project. His work exceeded our expectations and
-                    left us thoroughly impressed. His vast experience is evident
-                    in his approach, and his dedication to understanding and
-                    catering to the client's needs is commendable. Zain's work
-                    is a testament to his expertise and commitment. His ability
-                    to deliver high-quality results while maintaining
-                    professionalism is truly remarkable. We are grateful for his
-                    contributions and would highly recommend his services
-                  </p>
-                </div>
-              </div>
-            </section>
-          </div>
-        </article>
-
-        <!--
-        - #RESUME
-      -->
-
-        <article class="resume" data-page="resume">
-          <header>
-            <h2 class="h2 article-title">Resume</h2>
-          </header>
-
-          <a href="ZainQureshi.pdf" target="_blank">
-            <section class="resume-download">
-              <div class="resume-link">
-                <ion-icon
-                  name="document-text-outline"
-                  role="img"
-                  aria-label="document text outline"
-                ></ion-icon>
-                <span>My Resume</span>
-              </div>
-            </section>
-          </a>
-
-          <!-- Experience Timeline -->
-          <section class="timeline">
-            <div class="title-wrapper">
-              <div class="icon-box">
-                <ion-icon name="briefcase-outline"></ion-icon>
-              </div>
-              <h3 class="h3">Experience</h3>
-            </div>
-            <ol class="timeline-list">
-              <!-- Bonded -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Team Lead, Next.js (Full-Stack), Bonded
-                </h4>
-                <span>Mar 2025 — Present</span>
-                <p class="timeline-text">
-                  Lead the Next.js frontend team at Bonded, a dental &
-                  orthodontic technology platform — driving architecture, code
-                  reviews, and mentorship. Built an AI-powered platform
-                  (Anthropic, OpenAI, Mastra) with in-browser DICOM dental
-                  imaging via Cornerstone.js, Stripe & Assembly payments,
-                  field-level encrypted patient data, React Native patient/doctor
-                  apps, and a Node.js image-sync service.
-                </p>
-              </li>
-              <!-- Novalabs -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Full Stack Engineer, NovaLabs
-                </h4>
-                <span>Sep 2024 — Present · Freelance</span>
-                <p class="timeline-text">
-                  Built a multi-vendor e-commerce platform for Qatar University
-                  (QU) — admin/vendor dashboards (Next.js, MUI, TanStack Query),
-                  Arabic/English RTL, a modular Express + PostgreSQL backend with
-                  30+ API modules, and MyFatoorah payment integration. Also
-                  architected the QEF Tournament Portal and IPP E-commerce
-                  backend, and led Web3 development for Pixpel.io – a
-                  Concordium-based crypto-gaming platform with an industry-first
-                  NFT warranty system and compliant tokenomics.
-                </p>
-              </li>
-              <!-- Nielseniq (formerly GfK) -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Software Engineer, Nielseniq (formerly GfK)
-                </h4>
-                <span>May 2023 — Sep 2024</span>
-                <p class="timeline-text">
-                  Developed C# WinForms applications, led web crawling projects
-                  for product data, and integrated fintech solutions using .NET
-                  Core and Azure Serverless Functions. Implemented
-                  Playwright-based CI test automation to boost release
-                  reliability and spearheaded KiplePay payment-gateway
-                  integration with an eKYC onboarding portal (SignalR, React,
-                  Redux) to enhance transaction security and user experience.
-                </p>
-              </li>
-              <!-- MBE Canada -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Web Developer, MBE Canada
-                </h4>
-                <span>Mar 2022 — May 2023</span>
-                <p class="timeline-text">
-                  Developed ASP.NET web forms and RESTful APIs for critical
-                  business applications, including ACH projects and ATM
-                  software.
-                </p>
-              </li>
-              <!-- Fairplays -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Junior Web Developer, Fairplays
-                </h4>
-                <span>Aug 2021 — Dec 2021</span>
-                <p class="timeline-text">
-                  Revamped web pages, managed Google Analytics, and executed
-                  SEO/digital ad campaigns to enhance user engagement.
-                </p>
-              </li>
-              <!-- Technado -->
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Junior Programmer, Technado (Pvt) Ltd
-                </h4>
-                <span>Jul 2017 — Oct 2018</span>
-                <p class="timeline-text">
-                  Developed an Employee Management System in VB.NET, integrated
-                  ERP modules, and automated payroll processing.
-                </p>
-              </li>
-            </ol>
-          </section>
-
-          <!-- Education Timeline -->
-          <section class="timeline">
-            <div class="title-wrapper">
-              <div class="icon-box">
-                <ion-icon name="book-outline"></ion-icon>
-              </div>
-              <h3 class="h3">Education</h3>
-            </div>
-            <ol class="timeline-list">
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Coventry University</h4>
-                <span>Oct 2018 — Dec 2021</span>
-                <p class="timeline-text">
-                  Bachelor of Computer Science (Hons.)
-                </p>
-              </li>
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Tafs for A levels</h4>
-                <span>Aug 2016 — Aug 2018</span>
-                <p class="timeline-text">A levels in Computer Science</p>
-              </li>
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">
-                  Army Public School (APSACS)
-                </h4>
-                <span>Jun 2014 — Aug 2016</span>
-                <p class="timeline-text">O levels in Biology, General</p>
-              </li>
-            </ol>
-          </section>
-
-          <!-- Skills Section -->
-          <section class="skill">
-            <h3 class="h3 skills-title">My skills</h3>
-            <ul class="skills-list content-card">
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Full Stack Development</h5>
-                  <data value="90">90%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 90%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Web Design</h5>
-                  <data value="85">85%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 85%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">API & Backend Development</h5>
-                  <data value="90">90%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 90%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Cloud & DevOps</h5>
-                  <data value="85">85%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 85%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Technical Writing</h5>
-                  <data value="80">80%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 80%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Blockchain &amp; Web3 Development</h5>
-                  <data value="85">85%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 85%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Payment Gateway Integration</h5>
-                  <data value="80">80%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 80%"></div>
-                </div>
-              </li>
-              <li class="skills-item">
-                <div class="title-wrapper">
-                  <h5 class="h5">Test Automation (Playwright)</h5>
-                  <data value="80">80%</data>
-                </div>
-                <div class="skill-progress-bg">
-                  <div class="skill-progress-fill" style="width: 80%"></div>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <!-- Certificates Section -->
-          <section class="certificates">
-            <h3 class="h3 certificates-title">Certificates</h3>
-            <p>
-              For a comprehensive list of all my certificates, please visit my
-              Google Drive folder.
-            </p>
-            <a
-              href="https://drive.google.com/drive/folders/1zpehzlpxAgjzpmbdb_ze_tLpc0iaZR0l?usp=drive_link"
-              target="_blank"
-              class="certificates-btn"
-              >View Certificates</a
-            >
-          </section>
-        </article>
-
-        <!--
-        - #PORTFOLIO
-      -->
-
-        <article class="portfolio" data-page="portfolio">
-          <header>
-            <h2 class="h2 article-title">Portfolio</h2>
-          </header>
-
-          <section class="projects">
-            <ul class="filter-list">
-              <li class="filter-item">
-                <button class="active" data-filter-btn>All</button>
-              </li>
-              <li class="filter-item">
-                <button data-filter-btn>Web design</button>
-              </li>
-              <li class="filter-item">
-                <button data-filter-btn>Applications</button>
-              </li>
-              <li class="filter-item">
-                <button data-filter-btn>Web development</button>
-              </li>
-            </ul>
-
-            <div class="filter-select-box">
-              <button class="filter-select" data-select>
-                <div class="select-value" data-selecct-value>
-                  Select category
-                </div>
-                <div class="select-icon">
-                  <ion-icon name="chevron-down"></ion-icon>
-                </div>
-              </button>
-              <ul class="select-list">
-                <li class="select-item">
-                  <button data-select-item>All</button>
-                </li>
-                <li class="select-item">
-                  <button data-select-item>Web design</button>
-                </li>
-                <li class="select-item">
-                  <button data-select-item>Applications</button>
-                </li>
-                <li class="select-item">
-                  <button data-select-item>Web development</button>
-                </li>
-              </ul>
-            </div>
-
-            <ul class="project-list">
-              <!-- New Project: Bonded (Dental & Orthodontic Platform) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://www.bonded.ai/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/bonded.png"
-                      alt="Bonded — Dental & Orthodontic Practice Platform"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">Bonded — Dental Tech Platform</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- New Project: QU (Qatar University Multi-Vendor E-Commerce) -->
-              <!-- TODO: replace image with a real QU screenshot; no public URL (auth-gated) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="#">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (11).png"
-                      alt="QU (Qatar University Multi-Vendor E-Commerce)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">QU — Qatar University Marketplace</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- New Project: AMGYS (Corporate Website) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://www.amgys.com/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/amgys.jpg"
-                      alt="AMGYS — Corporate Website (Interior Design & Fit-out)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">AMGYS — Corporate Website</h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <!-- New Project: QEF (Tournament Management Portal) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://qefaccreditation.com/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (12).png"
-                      alt="QEF (Tournament Management Portal)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    QEF (Tournament Management Portal)
-                  </h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <!-- New Project: IPP (E-commerce Backend) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://www.ipp-qatar.com/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (11).png"
-                      alt="IPP (E-commerce Backend)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">IPP (E-commerce Backend)</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- New Project: KiplePay (Fintech - Wallet & Payment Processing) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://kiplepay.com/users/login" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (13).png"
-                      alt="KiplePay (Fintech - Wallet & Payment Processing)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    KiplePay (Fintech - Wallet & Payment Processing)
-                  </h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- New Project: Orchestrator (Automation & Testing) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://orcastrator.qa/#/projects" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (9).png"
-                      alt="Orchestrator (Automation & Testing)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    Orchestrator (Automation & Testing)
-                  </h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- New Project: eKYC Portal (Identity Verification System) -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://kiplepay.com/kyc/register" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (10).png"
-                      alt="eKYC Portal (Identity Verification System)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    eKYC Portal (Identity Verification System)
-                  </h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <!-- New Project: SF Business Solutions -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://sfbusinesssolutions.com/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (19).png"
-                      alt="SF Business Solutions Website"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">SF Business Solutions</h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <!-- New Project: Nosh NFT Platform -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://noshcommerce.com/" target="_blank">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (18).png"
-                      alt="Nosh NFT Platform"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">Nosh NFT Platform</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <!-- Existing Projects -->
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://tinykiwi.io/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (72).png"
-                      alt="TinyKiwi.io - Frontend Excellence"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    TinyKiwi.io - Frontend Excellence
-                  </h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://pixpel.io/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (78).png"
-                      alt="Pixpel.io - Backend Prowess"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">Pixpel.io - Backend Prowess</h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web design"
-              >
-                <a href="https://nft-marketplace-exl5.vercel.app/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (74).png"
-                      alt="Scriptmatix Frontend - NFT Innovation"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    Scriptmatix Frontend - NFT Innovation
-                  </h3>
-                  <p class="project-category">Web design</p>
-                </a>
-              </li>
-
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://github.com/zaynnqureshi17/ACH">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (80).png"
-                      alt="ACH, Canada"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">ACH, Canada</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="applications"
-              >
-                <a href="https://cashwave.live/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (81).png"
-                      alt="ATM Controller, Canada"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">ATM Controller, Canada</h3>
-                  <p class="project-category">Applications</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web design"
-              >
-                <a href="https://thistimemedia.com/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (73).png"
-                      alt="ThisTimeMedia (TMM)"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">ThisTimeMedia (TMM)</h3>
-                  <p class="project-category">Web design</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://www.studiocote.co/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (75).png"
-                      alt="Squarespace and Webflow - Platform Specialization"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">
-                    Squarespace and Webflow - Platform Specialization
-                  </h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-
-              <li
-                class="project-item active"
-                data-filter-item
-                data-category="web development"
-              >
-                <a href="https://fairplays.com.my/">
-                  <figure class="project-img">
-                    <div class="project-item-icon-box">
-                      <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                    <img
-                      src="./assets/images/projects/Screenshot (79).png"
-                      alt="Fairplays - Real Estate Website"
-                      loading="lazy"
-                    />
-                  </figure>
-                  <h3 class="project-title">Fairplays - Real Estate Website</h3>
-                  <p class="project-category">Web development</p>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </article>
-
-        <!--
-        - #CONTACT
-      -->
-
-        <article class="contact" data-page="contact">
-          <header>
-            <h2 class="h2 article-title">Contact</h2>
-          </header>
-
-          <section class="mapbox" data-mapbox>
-            <figure>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.6217405110187!2d67.12214041500088!3d24.90562328402309!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f9e7b5a5ff3%3A0x3c3a7d5b8f0c7e1b!2sBlock%2017%20Gulistan-e-Johar%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-                width="600"
-                height="450"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-              >
-                width="400" height="300" loading="lazy" ></iframe
-              >
-            </figure>
-          </section>
-
-          <section class="contact-form">
-            <h3 class="h3 form-title">Contact Form</h3>
-
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              class="form"
-              data-form
-            >
-              <input
-                type="hidden"
-                name="access_key"
-                value="ff081269-f4fa-4996-aebc-fb1216150bed"
-              />
-
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  name="name"
-                  class="form-input"
-                  placeholder="Full name"
-                  required
-                  data-form-input
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  class="form-input"
-                  placeholder="Email address"
-                  required
-                  data-form-input
-                />
-              </div>
-
-              <textarea
-                name="message"
-                class="form-input"
-                placeholder="Your Message"
-                required
-                data-form-input
-              ></textarea>
-
-              <button class="form-btn" type="submit" data-form-btn>
-                <ion-icon name="paper-plane"></ion-icon>
-                <span>Send Message</span>
-              </button>
-            </form>
-          </section>
-
-          <script
-            src="https://web3forms.com/client/script.js"
-            async
-            defer
-          ></script>
-        </article>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
       </div>
-    </main>
+    </nav>
 
-    <!--
-    - custom js link
-  -->
-    <script src="./assets/js/script.js"></script>
+    <!-- HERO -->
+    <header class="hero" id="top">
+      <div class="hero-grid-bg"></div>
+      <div class="wrap">
+        <div class="hero-status"><span class="dot"></span> Open to senior remote roles — Fintech · Web3 · Healthtech</div>
+        <h1>Zain <span class="grad">Qureshi</span></h1>
+        <p class="hero-role">Senior Full-Stack Engineer &amp; Team Lead</p>
+        <p class="hero-desc">
+          I build scalable, production-grade products across fintech, payments, and
+          healthtech — from payment gateways and eKYC systems to AI-powered platforms.
+          Currently leading the Next.js team at Bonded.
+        </p>
+        <div class="hero-cta">
+          <a href="#work" class="btn btn-primary">View Work</a>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-ghost">
+            Download CV
+            <svg viewBox="0 0 24 24" fill="none" width="15" height="15"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="icon-links">
+          <a href="https://github.com/zaynnqureshi17" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0112 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+          <a href="https://www.linkedin.com/in/zain-qureshi-zinion" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="mailto:zaynnqureshi.dev@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11H3v-11z" stroke="currentColor" stroke-width="2"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
 
-    <!--
-    - ionicon link
-  -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+        <div class="stats">
+          <div class="stat"><div class="num"><span class="grad">5+</span></div><div class="lbl">Years building</div></div>
+          <div class="stat"><div class="num">15+</div><div class="lbl">Products shipped</div></div>
+          <div class="stat"><div class="num">94%</div><div class="lbl">Txn success rate</div></div>
+          <div class="stat"><div class="num">25</div><div class="lbl">Team led</div></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <p class="eyebrow reveal">01 — Selected Work</p>
+        <h2 class="section-title reveal">Shipped products, real links.</h2>
+        <p class="section-sub reveal">A selection of fintech, e-commerce, healthtech, and Web3 platforms I've built and led.</p>
+
+        <div class="work-grid">
+          <!-- Bonded -->
+          <a class="card reveal" href="https://www.bonded.ai/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/bonded.png" alt="Bonded" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Healthtech · Team Lead</div>
+              <div class="card-title">Bonded — Dental Tech Platform <span class="arrow">↗</span></div>
+              <p class="card-desc">AI-powered dental &amp; orthodontic platform with in-browser DICOM imaging, Stripe payments, and a live iOS app.</p>
+              <div class="card-stack">Next.js · Prisma · Supabase · Anthropic</div>
+            </div>
+          </a>
+          <!-- KiplePay -->
+          <a class="card reveal" href="https://kiplepay.com/users/login" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(13).png" alt="KiplePay" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Fintech · Payments</div>
+              <div class="card-title">KiplePay — Wallet &amp; Payments <span class="arrow">↗</span></div>
+              <p class="card-desc">DuitNow QR payment gateway with real-time settlement on PCI-DSS compliant microservices. 94% transaction success.</p>
+              <div class="card-stack">.NET Core · SignalR · Azure</div>
+            </div>
+          </a>
+          <!-- QEF -->
+          <a class="card reveal" href="https://qefaccreditation.com/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(12).png" alt="QEF" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Web Platform</div>
+              <div class="card-title">QEF — Tournament Portal <span class="arrow">↗</span></div>
+              <p class="card-desc">Role-based tournament management for players, teams, and events with secure API integrations.</p>
+              <div class="card-stack">Next.js · TanStack Query · Shadcn</div>
+            </div>
+          </a>
+          <!-- IPP -->
+          <a class="card reveal" href="https://www.ipp-qatar.com/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(11).png" alt="IPP" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">E-commerce</div>
+              <div class="card-title">IPP — E-commerce Platform <span class="arrow">↗</span></div>
+              <p class="card-desc">CMS-like backend for products, orders, payments, and auth with auto-generated Swagger docs.</p>
+              <div class="card-stack">.NET Core · Node.js · PostgreSQL</div>
+            </div>
+          </a>
+          <!-- eKYC -->
+          <a class="card reveal" href="https://kiplepay.com/kyc/register" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(10).png" alt="eKYC Portal" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Fintech · Identity</div>
+              <div class="card-title">eKYC Verification Portal <span class="arrow">↗</span></div>
+              <p class="card-desc">OCR-based document validation processing 5,000+ identity verifications monthly for instant merchant onboarding.</p>
+              <div class="card-stack">React · Redux · OCR · AWS</div>
+            </div>
+          </a>
+          <!-- Orchestrator -->
+          <a class="card reveal" href="https://orcastrator.qa/#/projects" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(9).png" alt="Orchestrator" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">DevOps · Automation</div>
+              <div class="card-title">Orchestrator — Test Automation <span class="arrow">↗</span></div>
+              <p class="card-desc">Cloud test-automation platform with event-driven parallel UI/API testing, integrated into CI/CD.</p>
+              <div class="card-stack">Azure Functions · .NET · Playwright</div>
+            </div>
+          </a>
+          <!-- Nosh -->
+          <a class="card reveal" href="https://noshcommerce.com/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(18).png" alt="Nosh NFT" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Web3 · NFT</div>
+              <div class="card-title">Nosh — NFT Marketplace <span class="arrow">↗</span></div>
+              <p class="card-desc">Full-stack NFT minting and trading platform with Solidity smart contracts and on-chain interactions.</p>
+              <div class="card-stack">Next.js · Solidity · Web3.js</div>
+            </div>
+          </a>
+          <!-- Pixpel -->
+          <a class="card reveal" href="https://pixpel.io/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(78).png" alt="Pixpel" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Web3 · Gaming</div>
+              <div class="card-title">Pixpel.io — Gaming Platform <span class="arrow">↗</span></div>
+              <p class="card-desc">Concordium-based Web3 gaming platform with an industry-first NFT warranty system and MiCA-compliant tokenomics.</p>
+              <div class="card-stack">Node.js · Concordium · Smart Contracts</div>
+            </div>
+          </a>
+          <!-- TinyKiwi -->
+          <a class="card reveal" href="https://tinykiwi.io/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(72).png" alt="TinyKiwi" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Web App</div>
+              <div class="card-title">TinyKiwi.io — Image Editor <span class="arrow">↗</span></div>
+              <p class="card-desc">Online image editor — built the snapshot feature, reusable components, and led a CSS framework migration.</p>
+              <div class="card-stack">Next.js · Chakra UI</div>
+            </div>
+          </a>
+          <!-- AMGYS -->
+          <a class="card reveal" href="https://www.amgys.com/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/amgys.jpg" alt="AMGYS" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Corporate Site</div>
+              <div class="card-title">AMGYS — Corporate Website <span class="arrow">↗</span></div>
+              <p class="card-desc">Marketing site for an interior design &amp; fit-out firm with animations, before/after sliders, and carousels.</p>
+              <div class="card-stack">Next.js · Swiper · AOS</div>
+            </div>
+          </a>
+          <!-- Cashwave -->
+          <a class="card reveal" href="https://cashwave.live/" target="_blank">
+            <div class="card-media"><img src="./assets/images/projects/Screenshot%20(81).png" alt="Cashwave" loading="lazy" /></div>
+            <div class="card-body">
+              <div class="card-tag">Fintech · ATM</div>
+              <div class="card-title">Cashwave — ATM Platform <span class="arrow">↗</span></div>
+              <p class="card-desc">Backend for 2,000+ ATMs with real-time transaction monitoring and electronic-journal features across Canada.</p>
+              <div class="card-stack">.NET Core · SQL Server · Azure</div>
+            </div>
+          </a>
+          <!-- ToonBatch -->
+          <a class="card reveal" href="https://toonbatch.vercel.app/" target="_blank">
+            <div class="card-media ph tb"><span>Toon Batch</span></div>
+            <div class="card-body">
+              <div class="card-tag">Passion Project · EdTech</div>
+              <div class="card-title">ToonBatch — Gamified Learning <span class="arrow">↗</span></div>
+              <p class="card-desc">Co-founded edtech platform making learning fun for kids — gamified courses, quizzes, and progress tracking.</p>
+              <div class="card-stack">Next.js · React · Tailwind</div>
+            </div>
+          </a>
+          <!-- QU (private) -->
+          <div class="card reveal">
+            <div class="card-media ph"><span>QU</span></div>
+            <div class="card-body">
+              <div class="card-tag">E-commerce · Qatar</div>
+              <div class="card-title" style="justify-content: space-between;">QU — University Marketplace <span class="card-private">Private</span></div>
+              <p class="card-desc">Multi-vendor e-commerce platform for Qatar University with admin/vendor dashboards and Arabic/English RTL.</p>
+              <div class="card-stack">Next.js · Express · PostgreSQL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience" style="background: var(--bg-2);">
+      <div class="wrap">
+        <p class="eyebrow reveal">02 — Experience</p>
+        <h2 class="section-title reveal">Where I've shipped.</h2>
+
+        <div class="timeline">
+          <div class="xp current reveal">
+            <div class="xp-head"><span class="xp-role">Team Lead, Next.js — <span class="xp-co">Bonded</span></span><span class="xp-date">Mar 2025 — Present</span></div>
+            <div class="xp-meta">Dental &amp; orthodontic tech platform (US) · Remote</div>
+            <p class="xp-desc">Lead the Next.js frontend team — shipping a production-grade dental platform with LLM-powered clinical features (Anthropic, OpenAI, Mastra), in-browser DICOM imaging, Stripe payments, encrypted patient data, React Native apps, and a Node.js image-sync service.</p>
+          </div>
+          <div class="xp current reveal">
+            <div class="xp-head"><span class="xp-role">Full-Stack Engineer — <span class="xp-co">NovaLabs</span></span><span class="xp-date">Sep 2024 — Present</span></div>
+            <div class="xp-meta">Freelance · Remote</div>
+            <p class="xp-desc">Built a multi-vendor e-commerce platform for Qatar University (Next.js, MUI, Express, PostgreSQL, MyFatoorah). Architected the QEF Tournament Portal and IPP e-commerce backend; automated E2E testing with Playwright, cutting regression time 60%.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Full-Stack Engineer — <span class="xp-co">Kiple (Green Packet)</span></span><span class="xp-date">Aug 2024 — Sep 2025</span></div>
+            <div class="xp-meta"><span class="badge">Bursa Malaysia–listed</span> BNM-regulated e-wallet · Contract · Remote</div>
+            <p class="xp-desc">Integrated the KiplePay payment gateway (.NET Core + SignalR) for real-time DuitNow QR transactions. Built a secure eKYC portal on PCI-DSS compliant Azure microservices with a 94% transaction success rate.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Integration Engineer — <span class="xp-co">Elastic Email</span></span><span class="xp-date">Sep 2025 — Jun 2026</span></div>
+            <div class="xp-meta"><span class="badge">Global email platform · 30k+ customers</span> Contract · Remote</div>
+            <p class="xp-desc">Built a custom Elastic Email community node for n8n (TypeScript) — REST API integration with API-key auth for email, templates, contacts, and campaign automation.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Software Engineer — <span class="xp-co">Stellarsoft</span></span><span class="xp-date">Sep 2024 — Feb 2025</span></div>
+            <div class="xp-meta">Freelance · Remote</div>
+            <p class="xp-desc">Architected "Orchestrator," a cloud test-automation platform (.NET Core, Azure Functions, Playwright) with event-driven parallel UI/API testing, integrated into CI/CD.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Software Engineer — <span class="xp-co">NielsenIQ (formerly GfK)</span></span><span class="xp-date">May 2023 — Present</span></div>
+            <div class="xp-meta"><span class="badge">World's #1 consumer-intelligence firm</span> Part-time · Hybrid</div>
+            <p class="xp-desc">Built C# WinForms data-processing apps (SFTP, Excel/PDF reporting via .NET &amp; LINQ) and web-crawling/data-extraction tools that automated recurring analyst workflows.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Web Developer — <span class="xp-co">MBE Canada</span></span><span class="xp-date">Mar 2022 — May 2023</span></div>
+            <div class="xp-meta">On-site</div>
+            <p class="xp-desc">Delivered ASP.NET apps and ACH/call-center software (50,000+ transactions/month) and ATM electronic-journal features across 500+ locations (Cashwave platform).</p>
+          </div>
+        </div>
+        <p class="xp-earlier reveal" style="margin-top: 28px;"><b>Earlier:</b> Cubicus — Project Lead &amp; Full-Stack Developer (led a 25-person team) · Fairplays — Web Developer · Technado — Junior Programmer</p>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section" id="stack">
+      <div class="wrap">
+        <p class="eyebrow reveal">03 — Tech Stack</p>
+        <h2 class="section-title reveal">Tools I build with.</h2>
+        <div class="stack-grid">
+          <div class="stack-cat reveal"><h3>Languages</h3><div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">Rust</span><span class="chip">Solidity</span><span class="chip">Dart</span></div></div>
+          <div class="stack-cat reveal"><h3>Frontend</h3><div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Angular</span><span class="chip">Redux</span><span class="chip">TanStack Query</span><span class="chip">Tailwind</span><span class="chip">MUI</span></div></div>
+          <div class="stack-cat reveal"><h3>Backend &amp; APIs</h3><div class="chips"><span class="chip">Node.js</span><span class="chip">.NET Core</span><span class="chip">Express.js</span><span class="chip">REST</span><span class="chip">GraphQL</span><span class="chip">SignalR</span><span class="chip">Prisma</span></div></div>
+          <div class="stack-cat reveal"><h3>Cloud &amp; DevOps</h3><div class="chips"><span class="chip">AWS</span><span class="chip">Azure Functions</span><span class="chip">Docker</span><span class="chip">Supabase</span><span class="chip">CI/CD</span><span class="chip">Playwright</span><span class="chip">Git</span></div></div>
+          <div class="stack-cat reveal"><h3>Databases</h3><div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">SQL Server</span></div></div>
+          <div class="stack-cat reveal"><h3>Web3 &amp; AI</h3><div class="chips"><span class="chip">Solidity</span><span class="chip">Web3.js</span><span class="chip">Smart Contracts</span><span class="chip">Anthropic SDK</span><span class="chip">OpenAI SDK</span><span class="chip">Mastra</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV BAND -->
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="cv-band reveal">
+          <div>
+            <p class="eyebrow" style="margin-bottom: 12px;">Résumé</p>
+            <h2>One-page CV, recruiter-ready.</h2>
+            <p>An ATS-optimized summary of my experience, projects, and stack — verified to a single page.</p>
+          </div>
+          <a href="Zain_Qureshi_CV.pdf" target="_blank" class="btn btn-primary" style="padding: 14px 24px;">
+            Download CV (PDF)
+            <svg viewBox="0 0 24 24" fill="none" width="16" height="16"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact" style="background: var(--bg-2);">
+      <div class="wrap">
+        <p class="eyebrow reveal" style="justify-content: center;">04 — Contact</p>
+        <h2 class="reveal">Let's build something.</h2>
+        <p class="section-sub reveal" style="margin: 14px auto 0;">Open to senior full-stack, backend, and team-lead roles in fintech &amp; Web3 — remote.</p>
+        <a href="mailto:zaynnqureshi.dev@gmail.com" class="mail reveal">zaynnqureshi.dev@gmail.com</a>
+        <div class="icon-links reveal" style="justify-content: center;">
+          <a href="https://github.com/zaynnqureshi17" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0112 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.06 10.06 0 0022 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+          <a href="https://www.linkedin.com/in/zain-qureshi-zinion" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="mailto:zaynnqureshi.dev@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6.5h18v11H3v-11z" stroke="currentColor" stroke-width="2"/><path d="M3.5 7l8.5 6 8.5-6" stroke="currentColor" stroke-width="2"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot-inner">
+        <span>© 2026 Zain Qureshi</span>
+        <span>Karachi, Pakistan · Remote</span>
+        <span>Built &amp; designed by Zain Qureshi</span>
+      </div>
+    </footer>
+
+    <script>
+      // nav scrolled state
+      const nav = document.getElementById("nav");
+      const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+
+      // mobile menu
+      const toggle = document.getElementById("navToggle");
+      const links = document.getElementById("navLinks");
+      toggle.addEventListener("click", () => links.classList.toggle("open"));
+      links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
+
+      // scroll reveal
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+    </script>
   </body>
 </html>
