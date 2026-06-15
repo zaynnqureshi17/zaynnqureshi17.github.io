@@ -123,14 +123,21 @@
       .hero-grid-bg {
         position: absolute; inset: 0; z-index: 0; pointer-events: none;
         background-image:
-          radial-gradient(circle at 75% 12%, rgba(91, 140, 255, 0.22), transparent 42%),
-          radial-gradient(circle at 18% 88%, rgba(42, 214, 230, 0.14), transparent 45%),
-          linear-gradient(rgba(31, 43, 68, 0.5) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(31, 43, 68, 0.5) 1px, transparent 1px);
-        background-size: 100% 100%, 100% 100%, 54px 54px, 54px 54px;
-        -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 55%, transparent 100%);
-        mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 55%, transparent 100%);
+          linear-gradient(rgba(31, 43, 68, 0.45) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(31, 43, 68, 0.45) 1px, transparent 1px);
+        background-size: 54px 54px, 54px 54px;
+        -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 28%, #000 50%, transparent 100%);
+        mask-image: radial-gradient(ellipse 95% 75% at 50% 28%, #000 50%, transparent 100%);
       }
+      .aurora { position: absolute; border-radius: 50%; filter: blur(95px); z-index: 0; pointer-events: none; will-change: transform; }
+      .aurora.a1 { width: 540px; height: 540px; top: -140px; right: -60px; background: radial-gradient(circle, rgba(91, 140, 255, 0.55), transparent 68%); animation: float1 15s ease-in-out infinite; }
+      .aurora.a2 { width: 480px; height: 480px; bottom: -200px; left: -120px; background: radial-gradient(circle, rgba(42, 214, 230, 0.42), transparent 68%); animation: float2 19s ease-in-out infinite; }
+      .aurora.a3 { width: 360px; height: 360px; top: 30%; left: 42%; background: radial-gradient(circle, rgba(124, 92, 255, 0.3), transparent 70%); animation: float1 22s ease-in-out infinite; }
+      @keyframes float1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-46px, 44px); } }
+      @keyframes float2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(44px, -34px); } }
+      @keyframes shimmer { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+      @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5); } 50% { box-shadow: 0 0 0 7px rgba(52, 211, 153, 0); } }
+      @keyframes heroIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
       .hero .wrap { position: relative; z-index: 1; }
       .hero-status {
         display: inline-flex; align-items: center; gap: 9px;
@@ -138,12 +145,22 @@
         color: var(--muted); border: 1px solid var(--line);
         background: var(--surface-2); padding: 7px 14px; border-radius: 999px; margin-bottom: 28px;
       }
-      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; animation: pulse 2s ease-in-out infinite; }
       .hero h1 { font-size: clamp(40px, 8vw, 86px); line-height: 0.98; font-weight: 700; }
       .hero h1 .grad {
-        background: var(--grad); -webkit-background-clip: text; background-clip: text;
+        background: var(--grad); background-size: 220% 220%;
+        -webkit-background-clip: text; background-clip: text;
         -webkit-text-fill-color: transparent; color: transparent;
+        animation: shimmer 7s ease-in-out infinite;
       }
+      .hero .wrap > * { animation: heroIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+      .hero .wrap > *:nth-child(1) { animation-delay: 0.02s; }
+      .hero .wrap > *:nth-child(2) { animation-delay: 0.10s; }
+      .hero .wrap > *:nth-child(3) { animation-delay: 0.18s; }
+      .hero .wrap > *:nth-child(4) { animation-delay: 0.26s; }
+      .hero .wrap > *:nth-child(5) { animation-delay: 0.34s; }
+      .hero .wrap > *:nth-child(6) { animation-delay: 0.42s; }
+      .hero .wrap > *:nth-child(7) { animation-delay: 0.52s; }
       .hero-role {
         font-family: "Space Grotesk"; font-size: clamp(17px, 2.4vw, 23px);
         color: var(--text); margin-top: 18px; font-weight: 500;
@@ -166,8 +183,8 @@
         overflow: hidden; background: var(--line);
       }
       .stat { background: var(--bg-2); padding: 22px 20px; }
-      .stat .num { font-family: "Space Grotesk"; font-size: 30px; font-weight: 700; }
-      .stat .num .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+      .stat .num { font-family: "Space Grotesk"; font-size: 32px; font-weight: 700; font-variant-numeric: tabular-nums; }
+      .stat .num.grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
       .stat .lbl { font-family: "JetBrains Mono", monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); margin-top: 6px; }
 
       /* ---------- WORK ---------- */
@@ -319,10 +336,10 @@
         </div>
 
         <div class="stats">
-          <div class="stat"><div class="num"><span class="grad">5+</span></div><div class="lbl">Years building</div></div>
-          <div class="stat"><div class="num">15+</div><div class="lbl">Products shipped</div></div>
-          <div class="stat"><div class="num">94%</div><div class="lbl">Txn success rate</div></div>
-          <div class="stat"><div class="num">25</div><div class="lbl">Team led</div></div>
+          <div class="stat"><div class="num grad" data-target="5" data-suffix="+">0</div><div class="lbl">Years building</div></div>
+          <div class="stat"><div class="num" data-target="15" data-suffix="+">0</div><div class="lbl">Products shipped</div></div>
+          <div class="stat"><div class="num" data-target="94" data-suffix="%">0</div><div class="lbl">Txn success rate</div></div>
+          <div class="stat"><div class="num" data-target="25" data-suffix="">0</div><div class="lbl">Team led</div></div>
         </div>
       </div>
     </header>
@@ -447,7 +464,7 @@
           </a>
           <!-- ToonBatch -->
           <a class="card reveal" href="https://toonbatch.vercel.app/" target="_blank">
-            <div class="card-media ph tb"><span>Toon Batch</span></div>
+            <div class="card-media"><img src="./assets/images/projects/toonbatch.png" alt="ToonBatch" loading="lazy" /></div>
             <div class="card-body">
               <div class="card-tag">Passion Project · EdTech</div>
               <div class="card-title">ToonBatch — Gamified Learning <span class="arrow">↗</span></div>
@@ -455,16 +472,6 @@
               <div class="card-stack">Next.js · React · Tailwind</div>
             </div>
           </a>
-          <!-- QU (private) -->
-          <div class="card reveal">
-            <div class="card-media ph"><span>QU</span></div>
-            <div class="card-body">
-              <div class="card-tag">E-commerce · Qatar</div>
-              <div class="card-title" style="justify-content: space-between;">QU — University Marketplace <span class="card-private">Private</span></div>
-              <p class="card-desc">Multi-vendor e-commerce platform for Qatar University with admin/vendor dashboards and Arabic/English RTL.</p>
-              <div class="card-stack">Next.js · Express · PostgreSQL</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -507,12 +514,31 @@
             <p class="xp-desc">Built C# WinForms data-processing apps (SFTP, Excel/PDF reporting via .NET &amp; LINQ) and web-crawling/data-extraction tools that automated recurring analyst workflows.</p>
           </div>
           <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Project Lead &amp; Full-Stack Developer — <span class="xp-co">Cubicus</span></span><span class="xp-date">Jan 2023 — Jul 2024</span></div>
+            <div class="xp-meta">Remote</div>
+            <p class="xp-desc">Led a cross-functional team of 25 developers and designers (Agile/Scrum, Jira, client management). Built an NFT marketplace — Node.js/Express backend on PostgreSQL &amp; AWS, React/Tailwind frontend — plus a snapshot feature, a CSS framework migration, and WordPress multisite work.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Full-Stack Developer — <span class="xp-co">FemSol</span></span><span class="xp-date">Jan 2023 — Mar 2023</span></div>
+            <div class="xp-meta">Internship · Remote</div>
+            <p class="xp-desc">Built a property-listings web app end-to-end with React/Next.js, Redux, and Tailwind — authentication, listings, and search APIs — deployed on Vercel.</p>
+          </div>
+          <div class="xp reveal">
             <div class="xp-head"><span class="xp-role">Web Developer — <span class="xp-co">MBE Canada</span></span><span class="xp-date">Mar 2022 — May 2023</span></div>
             <div class="xp-meta">On-site</div>
             <p class="xp-desc">Delivered ASP.NET apps and ACH/call-center software (50,000+ transactions/month) and ATM electronic-journal features across 500+ locations (Cashwave platform).</p>
           </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Junior Web Developer — <span class="xp-co">Fairplays</span></span><span class="xp-date">Aug 2021 — Dec 2021</span></div>
+            <div class="xp-meta">Internship</div>
+            <p class="xp-desc">Built and improved web pages and plugins, configured Google Analytics, and ran Google-based SEO and ad campaigns; used Ajax/jQuery for interactive map features.</p>
+          </div>
+          <div class="xp reveal">
+            <div class="xp-head"><span class="xp-role">Junior Programmer — <span class="xp-co">Technado</span></span><span class="xp-date">Jul 2017 — Oct 2018</span></div>
+            <div class="xp-meta">Part-time</div>
+            <p class="xp-desc">Built an Employee Management System and payroll system in VB.NET, integrated ERP modules, and created a real-time bank currency-rate display (C#, ASP.NET, Ajax).</p>
+          </div>
         </div>
-        <p class="xp-earlier reveal" style="margin-top: 28px;"><b>Earlier:</b> Cubicus — Project Lead &amp; Full-Stack Developer (led a 25-person team) · Fairplays — Web Developer · Technado — Junior Programmer</p>
       </div>
     </section>
 
@@ -584,6 +610,22 @@
       const links = document.getElementById("navLinks");
       toggle.addEventListener("click", () => links.classList.toggle("open"));
       links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
+
+      // count-up stats
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.querySelectorAll(".stat .num[data-target]").forEach((el) => {
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || "";
+        if (reduceMotion) { el.textContent = target + suffix; return; }
+        const dur = 1500, t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - t0) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
 
       // scroll reveal
       const io = new IntersectionObserver(
