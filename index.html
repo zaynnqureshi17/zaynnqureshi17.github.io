@@ -84,15 +84,25 @@
       .wr-cat { font-family: "JetBrains Mono", monospace; font-size: 12.5px; color: var(--muted); text-align: right; letter-spacing: 0.03em; }
       .wr-arrow { font-size: 22px; color: var(--faint); text-align: right; transition: transform 0.3s, color 0.3s; }
       .row-thumb { display: none; }
-      @media (hover: hover) and (min-width: 900px) {
+      @media (hover: hover) and (min-width: 861px) {
+        .work-row { position: relative; }
         .work-row:hover { padding-left: 24px; }
         .work-row:hover .wr-name { transform: translateX(6px); color: var(--accent); }
         .work-row:hover .wr-arrow { transform: translate(4px, -4px); color: var(--accent); }
         .work-row:hover .wr-index { color: var(--accent); }
+        .wr-cat { transition: opacity 0.25s ease; }
+        .work-row:hover .wr-cat { opacity: 0; }
+        /* screenshot reveals anchored to its own row — no cursor-follow, no lingering on scroll */
+        .row-thumb {
+          display: block; position: absolute; right: 56px; top: 50%;
+          width: 232px; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 5px;
+          box-shadow: 0 16px 38px rgba(28, 39, 51, 0.3);
+          opacity: 0; transform: translateY(-50%) translateX(28px) rotate(-2.5deg);
+          transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+          pointer-events: none; z-index: 6;
+        }
+        .work-row:hover .row-thumb { opacity: 1; transform: translateY(-50%) translateX(0) rotate(-2.5deg); }
       }
-      .work-preview { position: fixed; top: 0; left: 0; width: min(32vw, 400px); aspect-ratio: 16 / 10; border: 1px solid var(--ink); background: var(--paper-2); z-index: 60; pointer-events: none; opacity: 0; transform: translate3d(calc(var(--x, 0) - 50%), calc(var(--y, 0) - 50%), 0) rotate(-4deg) scale(0.9); transition: opacity 0.3s ease, transform 0.18s ease-out; box-shadow: 10px 10px 0 rgba(12, 13, 16, 0.12); overflow: hidden; }
-      .work-preview.show { opacity: 1; transform: translate3d(calc(var(--x, 0) - 50%), calc(var(--y, 0) - 50%), 0) rotate(-4deg) scale(1); }
-      .work-preview img { width: 100%; height: 100%; object-fit: cover; }
 
       /* ---------- EXPERIENCE ---------- */
       .xp-row { padding: 26px 0; border-top: 1px solid var(--line); }
@@ -340,8 +350,6 @@
       </div>
     </footer>
 
-    <div class="work-preview" id="workPreview"><img src="" alt="" /></div>
-
     <script>
       const nav = document.getElementById("nav");
       const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 12);
@@ -352,26 +360,6 @@
       const links = document.getElementById("navLinks");
       toggle.addEventListener("click", () => links.classList.toggle("open"));
       links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => links.classList.remove("open")));
-
-      // hover-to-preview project list
-      const list = document.querySelector(".work-list");
-      const preview = document.getElementById("workPreview");
-      const previewImg = preview.querySelector("img");
-      const canHover = window.matchMedia("(hover: hover) and (min-width: 900px)").matches
-        && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (canHover && list) {
-        list.querySelectorAll(".work-row").forEach((row) => {
-          row.addEventListener("mouseenter", () => {
-            previewImg.src = row.dataset.img;
-            preview.classList.add("show");
-          });
-        });
-        list.addEventListener("mouseleave", () => preview.classList.remove("show"));
-        window.addEventListener("mousemove", (e) => {
-          preview.style.setProperty("--x", e.clientX + "px");
-          preview.style.setProperty("--y", e.clientY + "px");
-        }, { passive: true });
-      }
 
       const io = new IntersectionObserver(
         (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
